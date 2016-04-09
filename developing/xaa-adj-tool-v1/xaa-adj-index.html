@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>XAA Adjust Tool Prototype v1</title>
+
+    <script src="/common/js/jquery/jquery.min.js"></script>
+    <script src="/common/js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <script src="/common/js/angular/angular.js"></script>
+    <script src="/common/js/angular-ui-router/angular-ui-router.js"></script>
+
+
+    <script src="xaa-adj-js/xaa-main.js"></script>
+    <script src="xaa-adj-js/xaa-step1.js"></script>
+    <script src="xaa-adj-js/xaa-step2.js"></script>
+    <script src="xaa-adj-js/xaa-step3.js"></script>
+    <script src="xaa-adj-js/xaa-step4.js"></script>
+
+    <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="xaa-partials/ng-class-related.css" type="text/css">
+    <link rel="stylesheet" href="/common/css/jqueryui/jquery-ui.css" type="text/css">
+
+
+
+
+
+
+</head>
+<body ng-app="XaaModule">
+
+<div>
+    <div class="col-sm-12">
+        <div class="modal-header col-sm-10">
+            <div class="col-sm-4">
+                <img src="https://media.cofstatic.com/assets/rwd/img/logo/option-2-btn.png"
+                     alt="Capital One" class="default-logo" href="http://www.capitalone.com" class="col-sm-3"/>
+            </div>
+            <div class = "col-sm-6">
+                <h3 class="active" >Capital One XAA Adjust Tool for Commercial Bank</h3>
+            </div>
+        </div>
+    </div>
+
+    <div ng-controller="MainCtrl" class="col-sm-12">
+        <br/>
+
+        <div class="col-sm-2 place-hold">
+            <div>/* placeholder */
+                <p>this area is designed to contain links to other XAA tools,
+                    as well as to display relevant information for this XAA adjustment tool</p>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div>
+        </div>
+
+        <div class="col-sm-10" >
+            <div ui-view></div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-12">
+        <div class="modal-footer col-sm-10">
+            <p>This page is designed for demonstration purpose now! Features will be added on in the future.</p>
+            <p class="small">Produced by CML IT Team. Capital One Reserves all the right etc..</p>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

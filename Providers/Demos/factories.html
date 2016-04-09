@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="factoriesApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Providers: Factories</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="factories.js"></script>
+</head>
+<body>
+<h2>Working with Factories</h2>
+
+<div ng-controller="MainCtrl">
+  <h2>Main Controller</h2>
+
+  <p>Factory created at {{ createdTime }}</p>
+
+  <p>Factory.getTime() {{ getTime }}</p>
+
+  <p>Factory codeName {{ getCodeName() }}</p>
+</div>
+
+<div ng-controller="OtherCtrl">
+  <h2>Other Controller</h2>
+
+  <p>Factory created at {{ createdTime }}</p>
+
+  <p>Factory.getTime() {{ getTime }}</p>
+
+  <p>Factory codeName {{ getCodeName() }}</p>
+
+  <p>
+    <input type="text" name="cnUpdate" id="cnUpdate" ng-model="codeName"/>
+    <button ng-click="updateCodeName(codeName)" type="button">Update codeName</button>
+  </p>
+</div>
+
+</body>
+</html>

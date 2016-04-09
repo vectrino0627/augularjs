@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<!--
+<link rel="stylesheet" href="/common/css/bootstrap/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" type="text/css">
+<link rel="stylesheet" href="ng-class-related.css" type="text/css">
+
+<script src="/common/js/jquery/jquery.min.js"></script>
+<script src="/common/js/angular/angular.js"></script>
+<script src="../xaa-adj-js/xaa-step1.js"></script>
+<script src="/common/js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="../xaa-adj-js/xaa-main.js"></script>
+-->
+
+<div ng-app="XaaStep1">
+    <div class="col-sm-12">
+        <h3 class="alert-info col-sm-10">This part is for XAA Adjust Tool Step 1</h3>
+    </div>
+
+    <form novalidate ng-controller="Step1Ctrl" name="formStep1">
+
+        <div class="form-horizontal" style="margin-top:5px">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="deptID">Department ID: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="fobj.deptID" id="deptID" type="number" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="deptName">Department Name: </label>
+
+                <div class="col-sm-5"><input ng-model="fobj.deptName" id="deptName" type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group"><label class="col-sm-2 control-label" for="datepicker1">From Date: </label>
+
+                <div class="col-sm-5">
+
+
+                    <input type="text"  ng-model="fobj.fDate" placeholder="MM/DD/YYYY" jqdatepicker
+                           class="form-control datepicker"  id="datepicker1" required>
+                    </input>
+
+
+                </div>
+            </div>
+
+            <div class="form-group"><label class="col-sm-2 control-label" for="datepicker2">To Date: </label>
+
+                <div class="col-sm-5">
+                    <input type="text"  ng-model="fobj.tDate" placeholder="MM/DD/YYYY" jqdatepicker
+                           class="form-control datepicker"  id="datepicker2" required>
+                    </input>
+
+                </div>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+
+                <label class="col-sm-6 control-label"></label>
+
+                <div class="col-sm-4">
+                    <button ng-click="Step2(fobj)" class="col-sm-4 btn-success" name="GoStep2" id="submit" >
+                        Step 2
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div>
+            <p>Here are the binded info:</p>
+            <p>{{fobj}}</p>
+        </div>
+    </form>
+
+
+</div>

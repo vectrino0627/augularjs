@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Add an ng-app directive, with "iterApp" as the value -->
+<html ng-app="iterApp">
+<head>
+  <title>Exercise: Iterating data with Angular</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="iterate-data.js"></script>
+</head>
+<body>
+
+<!-- Add an ng-controller directive, pointing to MainCtrl -->
+<div ng-controller="MainCtrl">
+  <form>
+    <!-- Build a label and an input field to filter the teams. Don't forget
+         the ng-model attribute in the input tag. -->
+    <label for="fTeam">Filter teams: </label>
+    <input id="fTeam" type="text" ng-model="fTeam"/>
+  </form>
+
+  <p>A list of teams: </p>
+  <ul>
+    <!-- Use ng-repeat to print out a list item for each element in the list of teams.
+         Don't forget to filter the teams by the value in the input field you
+         created above. -->
+    <li ng-repeat="teamName in teams | filter:fTeam ">{{ teamName }}</li>
+  </ul>
+</div>
+
+</body>
+</html>

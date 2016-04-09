@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html ng-app="employeeApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>An Angular Application</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="../lib/js/employee-services.js"></script>
+  <script src="validation-styles.js"></script>
+  <style>
+    .glyphicon {
+      font-size: 150%
+    }
+
+    .glyphicon-ok {
+      color: green
+    }
+
+    .glyphicon-remove {
+      color: red
+    }
+
+    .form-group p {
+      margin: 4px 0;
+    }
+
+    input.ng-invalid.ng-touched {
+      border-color: red;
+      background-color: yellow
+    }
+  </style>
+
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row text-center" style="margin-bottom: 15px">
+    <h2>The Northwind Trading Company</h2>
+  </div>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Employees</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Search</a></li>
+        <li><a href="#">Edit</a></li>
+        <li><a href="#">Add</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div ng-controller="EmployeeMainCtrl" class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-1 col-sm-offset-5">
+      <p class="text-center">ng-valid</p>
+    </div>
+    <div class="col-sm-1">
+      <p class="text-center">ng-invalid</p>
+    </div>
+    <div class="col-sm-1">
+      <p class="text-center">ng-pristine</p>
+    </div>
+    <div class="col-sm-1">
+      <p class="text-center">ng-dirty</p>
+    </div>
+    <div class="col-sm-1">
+      <p class="text-center">ng-untouched</p>
+    </div>
+    <div class="col-sm-1">
+      <p class="text-center">ng-touched</p>
+    </div>
+  </div>
+
+  <div class="row"> <!-- The entire row for the form and the display -->
+    <form class="form-horizontal" name="employeeForm" novalidate="novalidate">
+      <div id="form-rows" class="col-sm-5">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="firstName">
+            First Name:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.firstName" required pattern=".{2,}"
+                   id="firstName" name="firstName"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="lastName">
+            Last Name:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.lastName" required ng-minlength="3"
+                   class="form-control" type="text"
+                   id="lastName" name="lastName"
+                />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="address">
+            Address:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.address" required ng-minlength="3"
+                   id="address" name="address"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="city">City:</label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.city" required ng-minlength="3"
+                   id="city" name="city"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="region">
+            State/Region:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.region" ng-minlength="2"
+                   id="region" name="region"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="country">
+            Country:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.country" required ng-minlength="2"
+                   id="country" name="country"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="postalCode">
+            Postal Code:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.postalCode" required ng-minlength="5"
+                   ng-pattern="postalCodePattern"
+                   id="postalCode" name="postalCode"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="email">E-mail:</label>
+          <div class="col-sm-9">
+            <input ng-model="emp.email"
+                   id="email" name="email"
+                   class="form-control" type="email"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="title">
+            Job Title:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.title"
+                   id="title" name="title"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="hireDate">
+            Hire Date:
+          </label>
+          <div class="col-sm-9">
+            <input ng-model="emp.hireDate"
+                   id="hireDate" name="hireDate"
+                   class="form-control" type="date"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Display other information next to the form -->
+      <div class="col-sm-6 form-horizontal">
+        <div class="form-group">
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.firstName.$valid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.firstName.$valid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.firstName.$invalid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.firstName.$invalid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.firstName.$pristine"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.firstName.$pristine"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.firstName.$dirty"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.firstName.$dirty"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.firstName.$untouched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.firstName.$untouched"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.firstName.$touched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.firstName.$touched"></span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.lastName.$valid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.lastName.$valid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.lastName.$invalid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.lastName.$invalid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.lastName.$pristine"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.lastName.$pristine"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.lastName.$dirty"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.lastName.$dirty"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.lastName.$untouched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.lastName.$untouched"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.lastName.$touched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.lastName.$touched"></span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.address.$valid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.address.$valid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.address.$invalid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.address.$invalid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.address.$pristine"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.address.$pristine"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.address.$dirty"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.address.$dirty"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.address.$untouched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.address.$untouched"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.address.$touched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.address.$touched"></span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.city.$valid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.city.$valid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.city.$invalid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.city.$invalid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.city.$pristine"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.city.$pristine"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.city.$dirty"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.city.$dirty"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.city.$untouched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.city.$untouched"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.city.$touched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.city.$touched"></span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.region.$valid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.region.$valid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.region.$invalid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.region.$invalid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.region.$pristine"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.region.$pristine"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.region.$dirty"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.region.$dirty"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.region.$untouched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.region.$untouched"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.region.$touched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.region.$touched"></span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.country.$valid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.country.$valid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.country.$invalid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.country.$invalid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.country.$pristine"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.country.$pristine"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.country.$dirty"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.country.$dirty"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.country.$untouched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.country.$untouched"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.country.$touched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.country.$touched"></span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.postalCode.$valid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.postalCode.$valid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.postalCode.$invalid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.postalCode.$invalid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.postalCode.$pristine"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.postalCode.$pristine"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.postalCode.$dirty"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.postalCode.$dirty"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.postalCode.$untouched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.postalCode.$untouched"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.postalCode.$touched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.postalCode.$touched"></span>
+            </p>
+          </div>
+        </div>
+         <div class="form-group">
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.email.$valid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.email.$valid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.email.$invalid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.email.$invalid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.email.$pristine"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.email.$pristine"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.email.$dirty"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.email.$dirty"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.email.$untouched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.email.$untouched"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.email.$touched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.email.$touched"></span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.title.$valid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.title.$valid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.title.$invalid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.title.$invalid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.title.$pristine"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.title.$pristine"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.title.$dirty"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.title.$dirty"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.title.$untouched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.title.$untouched"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.title.$touched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.title.$touched"></span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.hireDate.$valid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.hireDate.$valid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.hireDate.$invalid"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.hireDate.$invalid"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.hireDate.$pristine"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.hireDate.$pristine"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.hireDate.$dirty"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.hireDate.$dirty"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.hireDate.$untouched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.hireDate.$untouched"></span>
+            </p>
+          </div>
+          <div class="col-sm-2">
+            <p class="text-center">
+              <span class="glyphicon glyphicon-ok"
+                    ng-show="employeeForm.hireDate.$touched"></span>
+              <span class="glyphicon glyphicon-remove"
+                    ng-show="!employeeForm.hireDate.$touched"></span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+</body>
+</html>

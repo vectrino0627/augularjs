@@ -1,0 +1,70 @@
+
+/*.ng-binding
+{
+    color:#000000;
+    background: #ffff00;
+}*/
+/*
+.ng-valid
+{
+    color:#008000;
+    background: #808080;
+}*/
+/*
+.ng-pristine
+{
+    color:red;
+    background:lightskyblue;
+
+}*/
+
+/*
+.ng-invalid
+{
+    background:#808080;
+}*/
+
+body {
+    font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+    height: 100%;
+    width: 100%;
+
+
+}
+
+.place-hold {
+    border: thin solid lightgray;
+}
+
+/*div {
+    border: thin dashed red;
+}*/
+/*
+html, body, .wrap  {
+    height: 100%;
+}
+
+.wrap {
+    height: 100%;
+    overflow: hidden;
+    position: static;
+    margin-top:30px;
+    width:228px;
+}
+
+.sidebar2 {
+    background-color:#eee;
+    background-repeat: repeat;
+    padding:0;
+    height:100% !important;
+    position:relative;
+
+}
+
+.sidebar2 .sidebar2-content {
+    height:100%;
+    width:100%;
+    padding: 5px;
+    margin:0;
+    position:relative;
+}*/

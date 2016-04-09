@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="teamApp">
+<head>
+  <title>Exercise: Controller as syntax</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="scope-controller-as.js"></script>
+</head>
+
+<!-- Update ng-controller to use the "controller as" syntax -->
+<body ng-controller="TeamCtrl as tc">
+<form>
+  <label for="fTeam">Filter teams: </label>
+
+  <!-- Update each instance of ng-model as part of the controller object -->
+  <input id="fTeam" type="text" ng-model="tc.fTeam" /><br/>
+
+  <label for="newTeam">Add a new team: </label>
+
+  <input id="newTeam" type="text" ng-model="tc.newTeam"/>
+
+  <!-- Make sure that your event handlers invoke functions that are now
+       only available through the controller object -->
+  <button id="addBtn" ng-click="tc.addTeam(tc.newTeam)">Add team</button>
+  <br/>
+
+  <label for="dropTeam">Remove a team: </label>
+
+  <!-- teams is also only available through the controller object, but remember
+       that your team object is unique to its own scope; it does not need
+       a reference to the controller -->
+  <select id="dropTeam" ng-model="tc.dropTeam"
+          ng-options="teamName for teamName in tc.teams">
+    <option value="">Please select a team...</option>
+  </select>
+
+  <button id="dropBtn" ng-click="tc.delTeam(tc.dropTeam)">Drop team</button>
+  <br/>
+
+  <button id="restoreBtn" ng-click="tc.restoreTeams()">Restore dropped teams</button>
+</form>
+
+<p>A list of teams: </p>
+<ul>
+  <li ng-repeat="teamName in tc.teams | filter: tc.fTeam">{{teamName}}</li>
+</ul>
+</body>
+</html>

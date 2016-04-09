@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="ProductBrowser">
+<head>
+  <title>Routing for a Product browser</title>
+</head>
+<body>
+<div id="product-container" ng-controller="ProductCtrl">
+
+  <h2>Browse our Products!</h2>
+
+  <!-- Add an ng-view attribute to this div, as it will be
+       the target for $routeProvider -->
+  <div id="product-list-container" ng-view></div>
+
+</div>
+
+<!-- Go to app.js next -->
+<script src="/common/js/angular/angular.js"></script>
+<script src="/common/js/angular-route/angular-route.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
+</body>
+</html>

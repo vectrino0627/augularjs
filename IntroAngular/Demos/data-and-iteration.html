@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <title>Iterating over data</title>
+  <script src="/common/js/angular/angular.js"></script>
+</head>
+<body>
+
+<!-- ngInit allows you to hard-code data into a page.
+     Good for examples like this. -->
+<div ng-init="names=['John', 'Dan', 'Tim', 'Andre', 'Angela',
+                     'Maria', 'Andres', 'Chuck', 'Joseph', 'Jose']">
+  <p>Here are some names:</p>
+  <ul>
+    <!-- ngRepeat goes over a collection and creates the tag it is part of
+         for each element in the collection. -->
+    <li ng-repeat="personName in names">{{ personName }}</li>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="statesApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Intro to Angular Final Exercise</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="js/app.js"></script>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <style>
+    .highlight {
+      background-color : #5bc0de;
+    }
+
+    th[ng-click] {
+      cursor: pointer
+    }
+  </style>
+</head>
+<body>
+
+<div ng-controller="StateCtrl">
+
+  <!-- Build the table as follows:
+       Start by just creating rows of state information, probably using
+       ng-repeat to go over $scope.states
+       Then add a set of table headers, such that when you click on a header
+       the table re-sorts the records according to the column you clicked on
+       Finally, add another row after the headers, but before the content
+       Each column should have a text field
+       If content is entered into the field, it acts as a filter for that
+       column/property of the state
+
+       Challenges:
+       If there is a filter on a given column, apply the class "highlight"
+       to the column
+
+       Right now, clicking on the same column twice does not reverse the sort
+       (as you might expect). Implement this capability. This may be the only
+       part of the code that is easier to implement in a function rather than
+       here in the view.
+  -->
+  <table class="table">
+    <thead>
+    <tr>
+      <th ng-click="sortField=toggleSort('name')">Name
+        <span ng-class="sortIndicator('name')"></span></th>
+      <th ng-click="sortField=(sortField==='capital' ? '-capital' : 'capital')">Capital
+        <span ng-class="sortIndicator('capital')"></span></th>
+      <th ng-click="sortField=toggleSort('mostPopulousCity')">Most Populous City
+        <span ng-class="sortIndicator('mostPopulousCity')"></span></th>
+      <th ng-click="sortField=toggleSort('population')">Population
+        <span ng-class="sortIndicator('population')"></span></th>
+      <th ng-click="sortField=toggleSort('squareMiles')">Area (sq. miles)
+        <span ng-class="sortIndicator('squareMiles')"></span></th>
+    </tr>
+    <tr>
+      <th>
+        <input type="text" ng-model="stateFilter.name"/>
+      </th>
+      <th>
+        <input type="text" ng-model="stateFilter.capital"/>
+      </th>
+      <th>
+        <input type="text" ng-model="stateFilter.mostPopulousCity"/>
+      </th>
+      <th>
+        <input type="text" ng-model="stateFilter.population"/>
+      </th>
+      <th>
+        <input type="text" ng-model="stateFilter.squareMiles"/>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="state in states | filter:stateFilter | orderBy: sortField">
+      <td ng-class="{'highlight' : stateFilter.name }">{{ state.name }}</td>
+      <td ng-class="{'highlight' : stateFilter.capital }">{{ state.capital }}</td>
+      <td ng-class="{'highlight' : stateFilter.mostPopulousCity }">{{ state.mostPopulousCity }}</td>
+      <td ng-class="{'highlight' : stateFilter.population }">{{ state.population | number }}</td>
+      <td ng-class="{'highlight' : stateFilter.squareMiles }">{{ state.squareMiles | number }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

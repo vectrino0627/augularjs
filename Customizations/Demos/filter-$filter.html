@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="teamApp">
+<head>
+  <title>The $filter service</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+</head>
+<body ng-controller="TeamCtrl">
+<form>
+  <label for="fTeam">Filter teams: </label><input id="fTeam" type="text" ng-model="fTeam" /><br/>
+  <br/>
+</form>
+
+<table class="table">
+  <caption>A list of baseball teams</caption>
+  <thead>
+  <tr>
+    <th>Team</th>
+    <th>Won</th>
+    <th>Lost</th>
+    <th>Percentage</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="team in teams | filter: fTeam">
+    <td>{{team.team}}</td>
+    <td>{{ team.won }}</td>
+    <td>{{ team.lost }}</td>
+    <td>{{ team.win_percentage }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<script src="/common/js/angular/angular.js"></script>
+<script src="filter-$filter.js"></script>
+</body>
+</html>

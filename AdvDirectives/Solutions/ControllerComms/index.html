@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="commDirectives">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>An Angular Application</title>
+  <link rel="stylesheet" href="/New/commonstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/New/commonl/local.css"/>
+  <script src="/New/commonar/angular.js"></script>
+  <script src="/New/Formsmployee-services.js"></script>
+  <script src="comm-directives.js"></script>
+  <style>
+    .glyphicon {
+      font-size: 150%
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <h2>The employee directive, alone</h2>
+    <employee-dir employee-id="2"></employee-dir>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4"><h2>The pager, standalone</h2>
+      <pager></pager>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <!--
+      In this row, add a pager tag with a child employee-dir element,
+      requesting employee id 3
+      Then go to comm-directives.js
+      -->
+      <h2>Pager + Employee</h2>
+      <pager>
+        <employee-dir employee-id="3"></employee-dir>
+      </pager>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

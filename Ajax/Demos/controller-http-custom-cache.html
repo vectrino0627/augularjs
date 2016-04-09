@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="citiesApp">
+<head>
+  <title>$http cache example</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="controller-http-custom-cache.js"></script>
+</head>
+<body>
+<div ng-controller="CityListCtrl">
+
+  <label for="filter-city">Search for a city: </label>
+  <input type="text" id="filter-city" ng-model="filterCity" autofocus="true"/>
+  <button id="searchBtn" ng-click="getCities(filterCity)">Search!</button>
+  <button ng-click="invalidateCache()">Invalidate cache</button>
+
+  <ul ng-if="cities">
+    <!-- Setting the filter to filterVal disconnects the filter from the model -->
+    <li ng-repeat="city in cities | filter: filterVal | orderBy: 'name'">{{ city.name }}</li>
+  </ul>
+
+</div>
+</body>
+</html>

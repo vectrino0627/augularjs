@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="/common/js/angular/angular.js"></script>
+</head>
+<body>
+
+<div ng-init="person={firstName: 'John', lastName: 'Paxton', city: 'Montclair'}"></div>
+
+<ul>
+  <li ng-repeat="(k, v) in person">{{ k }} : {{ v }}</li>
+</ul>
+
+</body>
+</html>

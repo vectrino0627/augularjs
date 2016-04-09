@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="uiRouterMod">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Product Browsing with UI Router</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/underscore/underscore.js"></script>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="/common/js/angular-ui-router/angular-ui-router.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/product-services.js"></script>
+</head>
+<body>
+
+
+<!--
+Re-implement the current, nested-view-based app to use multiple named views.
+You will need to make many changes:
+
+index.html: Have three named views, one for the list, one for the product
+details and one for the supplier details
+
+app.js: Use the 'views' config, rather than multiple different states
+
+controllers.js: Use either a custom-built service, or the $scope as an
+event bus to communicate between the various views
+
+*-tpl: Move the appropriate code here into the view. Also, remove any
+ui-srefs, since we are no longer swapping states.
+
+Good luck!
+-->
+
+<div ng-controller="MainCtrl" class="container-fluid">
+  <div class="row banner">
+    <div class="col-sm-12 text-center">
+      <h2>Product Browser</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div ui-view="list"></div>
+    
+    <div class="col-sm-6">
+      <div ui-view="detail" class="item-top-margin"></div>
+      <hr/>
+      <div class="row">
+        <div ui-view="supplierDetail">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

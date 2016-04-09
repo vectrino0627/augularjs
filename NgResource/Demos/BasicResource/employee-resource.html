@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html ng-app="employeeApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>An Angular Application</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="/common/js/angular-messages/angular-messages.js"></script>
+  <script src="/common/js/angular-resource/angular-resource.js"></script>
+  <script src="employee-resource.js"></script>
+  <style>
+    input.ng-invalid.ng-touched {
+      border-color: red;
+      background-color: yellow
+    }
+  </style>
+
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row text-center" style="margin-bottom: 15px">
+    <h2>The Northwind Trading Company</h2>
+  </div>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Employees</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Search</a></li>
+        <li><a href="#">Edit</a></li>
+        <li><a href="#">Add</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div ng-controller="EmployeeMainCtrl" class="container-fluid">
+
+  <div class="row"> <!-- The entire row for the form and the display -->
+    <div class="col-sm-3 col-right-border full-height">
+      <form name="employeeSearchForm" class="form-horizontal" novalidate
+            style="margin-top:5px">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="search-firstName">
+            First Name:
+          </label>
+          <div class="col-sm-8">
+            <input ng-model="dbobj.firstName"
+                   ng-model-options="{debounce: 1000}"
+                   id="search-firstName" name="firstName"
+                   type="text" class="form-control"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="search-lastName">
+            Last Name:
+          </label>
+          <div class="col-sm-8">
+            <input ng-model="dbobj.lastName"
+                   ng-model-options="{debounce: 1000}"
+                   id="search-lastName" name="lastName"
+                   type="text" class="form-control"/>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="col-sm-3 col-right-border full-height y-scroller">
+      <ul style="margin-top:10px">
+        <li class="blank"
+            ng-repeat="employee in employees | filter:fobj"
+            ng-click="editEmployee(employee)">
+          {{ employee.firstName }} {{ employee.lastName }}
+        </li>
+      </ul>
+
+    </div>
+    <div class="col-sm-6 full-height" ng-show="emp"
+         id="employee-container">
+      <form class="form-horizontal" name="employeeForm" novalidate="novalidate">
+        <div id="form-rows" class="col-sm-12">
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="firstName">
+              First Name:
+            </label>
+
+            <div class="col-sm-4">
+              <input ng-model="emp.firstName" required
+                     id="firstName" name="firstName"
+                     class="form-control" type="text"/>
+            </div>
+            <!-- This version shows the error messages at page load -->
+            <div class="col-sm-4" ng-messages="employeeForm.firstName.$error">
+              <div ng-message="required">
+                Please enter a first name
+              </div>
+              <div ng-message="pattern">
+                The first name should have at least two characters.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="lastName">
+              Last Name:
+            </label>
+
+            <div class="col-sm-4">
+              <input ng-model="emp.lastName" required ng-minlength="3"
+                     class="form-control" type="text"
+                     id="lastName" name="lastName"
+                  />
+            </div>
+            <!--
+            This version will only show messages after the user has touched
+            the form field.
+            -->
+            <div class="col-sm-5"
+                 ng-messages="showMessage(employeeForm.lastName)">
+              <div ng-message="required">
+                Please enter a last name
+              </div>
+              <div ng-message="minlength">
+                The last name should have at least three characters.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="address">
+              Address:
+            </label>
+
+            <div class="col-sm-4">
+              <input ng-model="emp.address" required ng-minlength="3"
+                     id="address" name="address"
+                     class="form-control" type="text"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="city">City:</label>
+
+            <div class="col-sm-4">
+              <input ng-model="emp.city" required ng-minlength="3"
+                     id="city" name="city"
+                     class="form-control" type="text"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="region">
+              State/Region:
+            </label>
+
+            <div class="col-sm-4">
+              <input ng-model="emp.region" ng-minlength="2"
+                     id="region" name="region"
+                     class="form-control" type="text"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="country">
+              Country:
+            </label>
+
+            <div class="col-sm-4">
+              <input ng-model="emp.country" required ng-minlength="2"
+                     id="country" name="country"
+                     class="form-control" type="text"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="postalCode">
+              Postal Code:
+            </label>
+
+            <div class="col-sm-4">
+              <input ng-model="emp.postalCode" required ng-minlength="5"
+                     ng-pattern="postalCodePattern"
+                     id="postalCode" name="postalCode"
+                     class="form-control" type="text"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="email">E-mail:</label>
+            <div class="col-sm-4">
+              <input ng-model="emp.email"
+                     id="email" name="email"
+                     class="form-control" type="email"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="title">
+              Job Title:
+            </label>
+
+            <div class="col-sm-4">
+              <input ng-model="emp.title"
+                     id="title" name="title"
+                     class="form-control" type="text"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="hireDate">
+              Hire Date:
+            </label>
+            <div class="col-sm-4">
+              <input ng-model="emp.hireDate"
+                     id="hireDate" name="hireDate"
+                     class="form-control" type="date"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-3">
+              <button class="btn btn-small" ng-click="updateEmployee(emp, $event)">Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <input type="hidden" ng-model="emp.employeeID"/>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>

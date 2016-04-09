@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="introApp">
+<head>
+  <title>Highlighting matches</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <style>
+    .highlight {
+      background-color: #ffff00;
+    }
+
+    .line {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div ng-controller="HighlightAsyncCtrl" class="container-fluid">
+  <div class="row" style="font-size: 120%; margin-bottom: 10px">
+    <p class="col-sm-offset-2">Here are some people:</p>
+
+    <div class="col-sm-2 col-sm-push-2">
+      <ul>
+        <li ng-repeat="person in people">
+          <span ng-class="{'highlight' : fo.name && person.name.toUpperCase().indexOf(fo.name.toUpperCase()) > -1}">{{ person.gender === 'female' ? 'Ms.' : 'Mr.' }} {{ person.name }} ({{ person.age }})</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+    <form class="form-horizontal">
+      <div class="form-group"><label for="fName" class="col-sm-2 control-label">Highlight matching names: </label>
+        <div class="col-sm-3"><input id="fName" type="text" class="form-control" ng-model="fo.name"/></div>
+      </div>
+      <div class="row"><h3 class="col-sm-offset-1">Add a person: </h3></div>
+      <div class="form-group"><label for="personName" class="col-sm-2 control-label">Name:</label>
+        <div class="col-sm-3"><input id="personName" class="form-control" ng-model="person.name" type="text"/></div></div>
+      <div class="form-group"><label for="personAge" class="col-sm-2 control-label">Age:</label>
+        <div class="col-sm-3"><input id="personAge" class="form-control" ng-model="person.age" type="text"/></div></div>
+      <div class="form-group"><label for="personGender" class="col-sm-2 control-label">Gender:</label>
+      <div class="col-sm-3"><select ng-model="person.gender" class="form-control" name="personGender" id="personGender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select></div></div>
+      <div class="row col-sm-offset-2">
+        <button class="btn btn-default" ng-click="addPerson(person)">Add Person!</button>
+      </div>
+    </form>
+</div>
+<script src="/common/js/angular/angular.js"></script>
+<script src="/common/js/underscore/underscore.js"></script>
+<script src="js/highlight-match-async.js"></script>
+</body>
+</html>

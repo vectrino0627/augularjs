@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="introApp">
+<head>
+  <title>Adding names to the list</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="AddNameDupesCtrl">
+<p>Here are some names:</p>
+<ul>
+  <li ng-repeat="personName in names | filter:fName track by $index">
+    {{ personName }}
+  </li>
+</ul>
+<form>
+  <label for="fName">Filter names: </label>
+  <input id="fName" type="text" ng-model="fName"/><br/>
+  <!-- New field which will supply additional data to the list of names -->
+  <label for="newName">Add a name: </label>
+  <input id="newName" type="text" ng-model="newName"/>
+
+  <!-- Event handling! Has access to the ng-model newName as well. -->
+  <button ng-click="addName(newName)">Add name!</button>
+</form>
+</body>
+</html>

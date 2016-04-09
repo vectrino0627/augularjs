@@ -1,0 +1,13 @@
+<div class="col-sm-3 col-right-border full-height y-scroller">
+  <ul style="margin-top:10px">
+    <li class="blank" ng-repeat="customer in customers">
+      <a ui-sref="customers.detail({customerID: customer.customerID})">
+      <!--<a href="#/customers/{{ customer.customerID }}">-->
+        {{ customer.companyName }}
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="col-sm-6">
+  <div ui-view class="item-top-margin"></div>
+</div>

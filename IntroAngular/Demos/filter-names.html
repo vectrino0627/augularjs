@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="filterApp">
+<head lang="en">
+  <title>Filtering names</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="filter-names.js"></script>
+</head>
+<body>
+<div ng-controller="FilterCtrl">
+  <p>Here are some names:</p>
+  <ul>
+    <li ng-repeat="personName in names | filter:fName as filteredNames">
+      {{ personName }}
+    </li>
+    <li ng-show="filteredNames.length === 0">
+      None found.
+    </li>
+  </ul>
+  <form>
+    <label for="fName">Filter names: </label>
+    <input id="fName" type="text" ng-model="fName"/>
+  </form>
+</div>
+</body>
+</html>

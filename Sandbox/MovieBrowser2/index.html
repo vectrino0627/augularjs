@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Browser</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="/common/js/angular-ui-router/angular-ui-router.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body ng-app="movieBrowser">
+
+<div>
+  <h2>Welcome to the Movie Browser!</h2>
+  <div ui-view></div>
+  <div>
+    <p>Click here for <a ui-sref="advancedSearch">Advanced Search</a></p>
+  </div>
+</div>
+
+</body>
+</html>

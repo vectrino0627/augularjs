@@ -1,0 +1,44 @@
+[
+  {
+    "property": "base",
+    "values": [
+      "cake",
+      "raised"
+    ]
+  },
+  {
+    "property": "icing",
+    "values": [
+      "none",
+      "powdered",
+      "cinnamon",
+      "glazed",
+      "vanilla",
+      "chocolate",
+      "lemon",
+      "blueberry",
+      "marbled",
+      "maple"
+    ]
+  },
+  {
+    "property": "topping",
+    "values": [
+      "none",
+      "chocolate sprinkles",
+      "sprinkles",
+      "dots"
+    ]
+  },
+  {
+    "property": "filling",
+    "values": [
+      "none",
+      "lemon",
+      "raspberry",
+      "strawberry",
+      "chocolate",
+      "cream "
+    ]
+  }
+]

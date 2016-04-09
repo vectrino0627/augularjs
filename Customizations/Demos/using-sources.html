@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="empDetailApp">
+<head>
+  <title>Using the ng-src attribute</title>
+</head>
+<body>
+
+<div ng-controller="EmpCtrl">
+  <ul>
+    <li>{{employee.firstName}} {{employee.lastName}}</li>
+    <li>Hired on {{employee.hireDate | date}}</li>
+    <li>Phone: {{employee.homePhone}}</li>
+  </ul>
+  <div style="float:left">
+    <!-- Swap this... -->
+    <img src="{{employee.photoPath}}"/>
+
+    <!-- For one of these... -->
+    <!--<img ng-src="{{employee.photoPath}}"/>-->
+    <!--<img ng-if="employee.origPhotoPath" ng-src="../../images/{{employee.origPhotoPath}}"/>-->
+    <!--<img src="../../images/rosie-the-riveter.jpg"/>-->
+
+    <!-- Then check Chrome's Network tab! -->
+
+    <!-- Note that the below are not an improvement, it has the same problem. -->
+    <!--<img src="../../images/{{employee.origPhotoPath}}"/>-->
+    <!--<img ng-src="../../images/{{employee.origPhotoPath}}"/>-->
+    <!--<img ng-src="{{ '../../images/' + employee.origPhotoPath}}"/>-->
+
+  </div>
+</div>
+
+<script src="/common/js/angular/angular.js"></script>
+<script src="using-sources.js"></script>
+</body>
+</html>

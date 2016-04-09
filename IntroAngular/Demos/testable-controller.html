@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!-- There's no actual difference here. It's a placeholder file. -->
+<html ng-app="introApp">
+<head>
+  <title>A separate controller</title>
+</head>
+<body ng-controller="FirstCtrl">
+<p>Here are some names:</p>
+<ul>
+  <li ng-repeat="personName in names | filter:fName">{{personName}}</li>
+</ul>
+<form>
+  <label for="fName">Filter names: </label><input id="fName" type="text" ng-model="fName"/>
+</form>
+
+<script src="/common/js/angular/angular.js"></script>
+<script src="js/controllers.js"></script>
+</body>
+</html>

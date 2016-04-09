@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="introApp">
+<head>
+  <title>Highlighting matches</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="/common/js/underscore/underscore.js"></script>
+  <script src="highlight-match-async.js"></script>
+
+  <style>
+    .highlight {
+      background-color: #ffff00;
+    }
+
+    .line {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div ng-controller="HighlightAsyncCtrl" class="container-fluid">
+  <div class="row">
+    <div id="display-rows" class="col-sm-3" style="margin: 30px 0px">
+      <p>Here are some people:</p>
+
+      <div>
+        <ul>
+          <li ng-repeat="person in people">
+          <span ng-class="{'highlight' : isHighlighted(fo, person)}">
+            {{ person.gender === 'female' ? 'Ms.' : 'Mr.' }} {{ person.name }} ({{ person.age }})
+          </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <form class="form-horizontal">
+      <div id="form-rows" class="col-sm-7 col-left-border"
+           style="margin:10px 0px">
+        <div class="row"><h3 class="col-sm-4 text-right">Filtering names: </h3>
+        </div>
+        <div class="form-group">
+          <label for="fName" class="col-sm-4 control-label">
+            Highlight matching names:
+          </label>
+          <div class="col-sm-8">
+            <input id="fName" type="text" class="form-control"
+                   ng-model="fo.name"/>
+          </div>
+        </div>
+        <div class="row"><h3 class="col-sm-4 text-right">Add a person: </h3>
+        </div>
+        <div class="form-group">
+          <label for="personName" class="col-sm-4 control-label">Name:</label>
+          <div class="col-sm-8">
+            <input id="personName" class="form-control" ng-model="person.name"
+                   type="text"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="personAge" class="col-sm-4 control-label">Age:</label>
+          <div class="col-sm-8">
+            <input id="personAge" class="form-control" ng-model="person.age"
+                   type="text"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="personGender" class="col-sm-4 control-label">Gender:
+          </label>
+          <div class="col-sm-8">
+            <select ng-model="person.gender"
+                    class="form-control" name="personGender"
+                    id="personGender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-sm-push-4">
+            <button class="btn btn-default" ng-click="addPerson(person)">Add
+              Person!
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+</body>
+</html>

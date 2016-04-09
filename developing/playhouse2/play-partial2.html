@@ -1,0 +1,26 @@
+<div ng-app="Step1">
+
+    <div class="col-sm-12">
+        <h3 class="alert-info col-sm-10">This part is for Step 2</h3>
+    </div>
+
+    <form novalidate ng-controller="Step2Ctrl" name="formStep2">
+
+        <div class="form-horizontal" style="margin-top:5px">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="bkNum">Bank Number: </label>
+
+                <div class="col-sm-5">
+                    <select ng-model="bkacct.bankID" id="bkNum" type="number" class="form-control" required
+                            ng-options ="record.bankID as record.bankID for record in dinfo | unique:'bankID' ">
+                        <option value="">Select Bank Number</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>

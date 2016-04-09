@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dirApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Experimenting with directives</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="dependent-dropdowns.js"></script>
+</head>
+<body>
+<h2>Experimenting with directives</h2>
+
+<div ng-controller="MainCtrl">
+  <p>Testing the hello directive: <div our-hello first-name="firstName"
+      last-name="Paxton"></div></p>
+
+  <h2>Directives and the link function</h2>
+
+  <form>
+    <label for="make">Please select the make of your car: </label>
+    <select ng-model="make" id="make">
+      <option>Ford</option>
+      <option>Honda</option>
+      <option>Toyota</option>
+      <option>Chevy</option>
+    </select>
+
+    <p><label for="model">Please select your model:</label>
+    <select name="model" id="model" select-link="make"></select></p>
+
+    <p><label for="model">Please select your model:</label>
+      <steve-link watch="make"></steve-link></p>
+
+  </form>
+
+</div>
+
+</body>
+</html>

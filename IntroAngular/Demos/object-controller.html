@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="objectApp">
+<head>
+  <title>An array of objects</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="object-controller.js"></script>
+</head>
+<body ng-controller="ObjectCtrl">
+<p>Here are some names:</p>
+<ul>
+  <!-- Since we're iterating over an array of objects, we need to refer to
+       the object's properties within the template strings. -->
+  <li ng-repeat="person in people | filter:fName | orderBy:'name'">
+    {{ person.name }} is a {{ person.age }}-year-old {{ person.gender }}
+  </li>
+</ul>
+<form>
+  <!-- Note that we didn't change the filter. Try filtering on '3' or 'ale' -->
+  <label for="fName">Filter names: </label>
+  <input id="fName" type="text" ng-model="fName"/>
+</form>
+</body>
+</html>

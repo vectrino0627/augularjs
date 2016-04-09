@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="constantsApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Providers: Constants</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="/common/js/angular-route/angular-route.js"></script>
+  <script src="constants.js"></script>
+</head>
+<body>
+<div>
+  <h2>Testing Constants</h2>
+
+  <ul>
+    <li>Click <a href="#/ccheck/foo">here</a> to use the constant</li>
+    <li>Click <a href="#/ccheck/no-constant">here</a> to avoid the constant</li>
+  </ul>
+
+  <div ng-view>Content should appear here either way</div>
+</div>
+
+</body>
+</html>

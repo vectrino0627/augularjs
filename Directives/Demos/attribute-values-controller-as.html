@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="dirApp">
+<head>
+  <title>Directives</title>
+</head>
+<body>
+<div ng-controller="DirCtrl as ctrl">
+  <label for="someName">Enter a name here:</label>
+  <input ng-model="someName" type="text" name="someName" id="someName"/>
+  <p>Attribute-based directives</p>
+  <ul>
+    <li>greet-person:</li>
+    <li greet-person="ctrl.demoName1"></li>
+    <li>greet-person2:</li>
+    <li greet-person-obj="ctrl.employee"></li>
+    <li>Tag with an attribute:</li>
+    <li>
+      <greetings person="employee"></greetings>
+    </li>
+    <li>Custom attribute with a value</li>
+    <li>What if we use a bound variable?</li>
+    <li greet-person="demoName1"></li>
+    <li>Guess we need those magical curly braces:</li>
+    <li greet-person="{{ demoName1 }}"></li>
+
+  </ul>
+</div>
+
+<script src="/common/js/angular/angular.js"></script>
+<script src="attribute-values-controller-as.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="introApp">
+<head>
+  <title>Ordering objects</title>
+</head>
+<body ng-controller="FirstCtrl">
+
+<!-- Generate a list of possible sort fields -->
+<p><label for="sort-select">Here are some names, ordered by</label>
+  <select id="sort-select" ng-options="prop for prop in propNames" ng-model="sortField"></select> :<br/>
+  <label for="reverseChk"><input type="checkbox" name="reverseChk" id="reverseChk" ng-model="reverseChk"/> Reverse</label></p>
+<ul>
+  <!-- Add orderBy using sortField, could have gone with 'name' or 'age', etc.
+       The third argument (true) reverses the sort.
+
+       orderBy:field:false
+       -->
+  <li ng-repeat="person in people | filter:filterObj | orderBy:['gender', '-name']">{{person.name}} is a {{person.age}}-year-old {{person.gender}}</li>
+</ul>
+<form>
+  <label for="fName">Filter names: </label><input id="fName" type="text" ng-model="filterObj.name"/><br/>
+  <label for="fAge">Filter age: </label><input id="fAge" type="text" ng-model="filterObj.age"/><br/>
+  <label for="fGender">Filter gender: </label><input id="fGender" type="text" ng-model="filterObj.gender"/><br/>
+</form>
+
+<script src="/common/js/angular/angular.js"></script>
+<script src="js/controllers-objects.js"></script>
+</body>
+</html>

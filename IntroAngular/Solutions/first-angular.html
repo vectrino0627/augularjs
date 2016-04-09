@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <title>Our first AngularJS page</title>
+  <script src="/common/js/angular/angular.js"></script>
+</head>
+<body>
+<div>
+  <!--
+  Add a paragraph with the following sub-elements:
+  A label with a for attribute of team. The label should ask the user to name
+  their favorite sports team
+  A text field with an id of team and an ng-model of team
+  -->
+  <p>
+    <label for="team">Please name your favorite sports team: </label>
+    <input ng-model="team" type="text" name="team" id="team" autofocus/>
+  </p>
+
+  <!--
+  Add another paragraph which states "Your favorite team is the " and the
+  name of the team from the input field, above.
+  The paragraph should only appear if the team field has data in it.
+  -->
+  <p ng-if="team">
+    Your favorite team is the {{ team }}.
+  </p>
+</div>
+
+</body>
+</html>

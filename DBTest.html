@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="installCheck">
+<head>
+  <title>Angular class database check</title>
+  <style>
+    .not-installed {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body ng-controller="VersionCheckCtrl">
+<h2>A check to see whether Angular JS is installed correctly....</h2>
+
+<div id="angular-status">
+  <p>Angular is <span id="angular-installed" class="not-installed">NOT</span> installed correctly.</p>
+
+  <p>Angular version: <span id="angular-version">{{angularVersion}}</span></p>
+</div>
+
+<div id="db-status">
+  <p>The database is <span id="db-installed" class="not-installed">NOT</span> running.</p>
+  <p>Product number 1 is {{productName}}</p>
+</div>
+<script src="/common/js/angular/angular.js"></script>
+
+<script>
+  var installCheck = angular.module('installCheck', []);
+  installCheck.controller('VersionCheckCtrl', function($scope, $http) {
+    console.log( 'Angular version: %s', angular.version.full );
+    $scope.angularVersion = angular.version.full;
+    angular.element(document.getElementById('angular-installed') ).empty();
+
+    $http.get('http://localhost:8001/northwind/products/1' ).then(function(data) {
+      console.log( data );
+      angular.element(document.getElementById('db-installed') ).empty();
+      $scope.productName = data.data.productName;
+    });
+
+  })
+</script>
+</body>
+</html>

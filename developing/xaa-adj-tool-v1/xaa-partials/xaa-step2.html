@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<!--
+<link rel="stylesheet" href="/common/css/bootstrap/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" type="text/css">
+<link rel="stylesheet" href="ng-class-related.css" type="text/css">
+
+<script src="/common/js/jquery/jquery.min.js"></script>
+<script src="/common/js/angular/angular.js"></script>
+<script src="../xaa-adj-js/xaa-step2.js"></script>
+<script src="/common/js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+-->
+
+<div ng-app="XaaStep2">
+
+    <div class="col-sm-12">
+        <h3 class="alert-info col-sm-10">This part is for XAA Adjust Tool Step 2</h3>
+    </div>
+    <form novalidate ng-controller="Step2Ctrl" name="formStep2">
+
+        <div class="form-horizontal" style="margin-top:5px">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="oName">Officer Name: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="fuser.oName" id="oName" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="oNum">Officer Phone Number: </label>
+
+                <div class="col-sm-5"><input ng-model="fuser.oNum" id="oNum" type="tel" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="oCode">Officer Code: </label>
+
+                <div class="col-sm-5"><input ng-model="fuser.oCode" id="oCode" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="sname">Submitted By Name: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="fuser.sname" id="sname" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="sNum">Submitted By Phone Number: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="fuser.spNum" id="sNum" type="tel" class="form-control" required/>
+                </div>
+            </div>
+
+
+            <br>
+
+            <div class="form-group">
+
+                <div class="col-sm-4">
+                    <button ng-click="GoStep1()" class="col-sm-4 btn-warning" name="GoStep1" id="submit1">
+                        Step 1
+                    </button>
+                </div>
+
+
+                <label class="col-sm-2 control-label"></label>
+
+                <div class="col-sm-4">
+                    <button ng-click="GoStep3()" class="col-sm-4 btn-success" name="GoStep3" id="submit2">
+                        Step 3
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div>
+            <p>Here are the binded info:</p>
+            <p>{{fuser}}</p>
+        </div>
+    </form>
+
+
+</div>

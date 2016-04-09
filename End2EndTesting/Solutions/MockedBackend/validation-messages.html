@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html ng-app="customerApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>An Angular Application</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="/common/js/angular-messages/angular-messages.js"></script>
+  <script src="../../../Forms/lib/js/customer-services.js"></script>
+  <script src="validation-messages.js"></script>
+
+  <style>
+    #customer-container input[required] {
+      border-color: orange
+    }
+
+    #customer-container input.ng-touched.ng-invalid {
+      border-color: red;
+      background-color: yellow
+    }
+
+  </style>
+
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row text-center" style="margin-bottom: 15px">
+    <h2>The Northwind Trading Company</h2>
+  </div>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Customers</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Search</a></li>
+        <li><a href="#">Edit</a></li>
+        <li><a href="#">Add</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div ng-controller="CustomerCtrl" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-right-border full-height">
+      <form name="customerSearchForm" class="form-horizontal" novalidate
+            style="margin-top:5px">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="search-companyName">
+            Company Name:
+          </label>
+          <div class="col-sm-8">
+            <input ng-model="dbobj.companyName"
+                   ng-model-options="{debounce: 1000}"
+                   id="search-companyName" name="companyName"
+                   type="text" class="form-control"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="search-contactName">
+            Contact Name:
+          </label>
+          <div class="col-sm-8">
+            <input ng-model="dbobj.contactName"
+                   ng-model-options="{debounce: 1000}"
+                   id="search-contactName" name="contactName"
+                   type="text" class="form-control"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="search-city">
+            City:
+          </label>
+          <div class="col-sm-8">
+            <select ng-model="fobj.city" ng-options="city for city in cities"
+                    ng-change="resetCities(fobj.city)"
+                    class="form-control" name="city" id="search-city">
+              <option value="">All Cities</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="search-country">
+            Country:
+          </label>
+          <div class="col-sm-8">
+            <select ng-model="fobj.country"
+                    ng-options="country for country in countries"
+                    ng-change="limitCities(fobj.country)"
+                    class="form-control" name="country" id="search-country">
+              <option value="">All Countries</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-sm-3 col-right-border full-height y-scroller">
+      <ul style="margin-top:10px">
+        <li class="blank"
+            ng-repeat="customer in customers | filter:fobj"
+            ng-click="editCustomer(customer)">
+          {{ customer.companyName }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-sm-6 full-height" ng-show="customer" id="customer-container">
+      <form name="customerEditForm" class="form-horizontal"
+            style="margin-top:5px">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-customerID">
+            Customer ID:
+          </label>
+          <div class="col-sm-4">
+            <input ng-model="customer.customerID" required pattern="[A-Z]{5}"
+                   id="edit-customerID" name="customerID"
+                   class="form-control" type="text"/>
+          </div>
+          <!--
+            Write an ng-messages block which shows when customerID has been
+            touched and has a validation error. Don't forget messages for both
+            required and pattern validations.
+            The containing div should have a class of col-sm-5.
+          -->
+          <div class="col-sm-5" ng-messages="showMessage(customerEditForm.customerID)">
+            <div ng-message="required">
+              The Customer ID is required.
+            </div>
+            <div ng-message="pattern">
+              The Customer ID should be 5 alphabetical characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-companyName">
+            Company Name:
+          </label>
+          <div class="col-sm-4">
+            <input ng-model="customer.companyName" required ng-pattern="/[A-Z][a-z]+/"
+                   id="edit-companyName" name="companyName"
+                   class="form-control" type="text"/>
+          </div>
+          <!--
+            Write an ng-messages block which shows when companyName has been
+            touched and has a validation error. Don't forget messages for both
+            required and pattern validations.
+            The containing div should have a class of col-sm-5.
+          -->
+          <div class="col-sm-5" ng-messages="showMessage(customerEditForm.companyName)">
+            <div ng-message="required">
+              The Company Name is required.
+            </div>
+            <div ng-message="pattern">
+              The Company Name should be a capital letter followed by one or more other letters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-contactName">
+            Contact Name:
+          </label>
+          <div class="col-sm-4">
+            <input ng-model="customer.contactName" required ng-pattern="/[A-Z][a-z]+/"
+                   id="edit-contactName" name="contactName"
+                   class="form-control" type="text"/>
+          </div>
+          <!--
+            Write an ng-messages block which shows when contactName has been
+            touched and has a validation error. Don't forget messages for both
+            required and pattern validations.
+            The containing div should have a class of col-sm-5.
+          -->
+          <div class="col-sm-5" ng-messages="showMessage(customerEditForm.contactName)">
+            <div ng-message="required">
+              The Contact Name is required.
+            </div>
+            <div ng-message="pattern">
+              The Contact Name should be a capital letter followed by one or more other letters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-contactTitle">
+            Contact Title:
+          </label>
+          <div class="col-sm-4">
+            <input ng-model="customer.contactTitle" required
+                   id="edit-contactTitle" name="contactTitle"
+                   class="form-control" type="text"/>
+          </div>
+          <!--
+            Write an ng-messages block which shows when contactTitle has been
+            touched and has a validation error.
+            The containing div should have a class of col-sm-5.
+          -->
+          <div class="col-sm-5" ng-messages="showMessage(customerEditForm.contactTitle)">
+            <div ng-message="required">
+              The Contact Title is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-address">
+            Address:
+          </label>
+          <div class="col-sm-4">
+            <input ng-model="customer.address" required
+                   id="edit-address" name="address"
+                   class="form-control" type="text"/>
+          </div>
+          <!--
+            Write an ng-messages block which shows when address has been
+            touched and has a validation error.
+            The containing div should have a class of col-sm-5.
+          -->
+          <div class="col-sm-5" ng-messages="showMessage(customerEditForm.address)">
+            <div ng-message="required">
+              The Address is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-city">City:</label>
+          <div class="col-sm-4">
+            <!-- Required -->
+            <input ng-model="customer.city" required
+                   id="edit-city" name="city"
+                   class="form-control" type="text"/>
+          </div>
+          <!--
+            Write an ng-messages block which shows when city has been
+            touched and has a validation error.
+            The containing div should have a class of col-sm-5.
+          -->
+          <div class="col-sm-5" ng-messages="showMessage(customerEditForm.city)">
+            <div ng-message="required">
+              The City is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-region">
+            Region/State:
+          </label>
+          <div class="col-sm-4">
+            <input ng-model="customer.region" ng-required="customer.country==='USA'"
+                   id="edit-region" name="region"
+                   class="form-control" type="text"/>
+          </div>
+          <!--
+            Write an ng-messages block which shows when region has been
+            touched and has a validation error.
+            The containing div should have a class of col-sm-5.
+          -->
+
+          <div class="col-sm-5" ng-messages="showMessage(customerEditForm.region)">
+            <div ng-message="required">
+              The State is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-postalCode">
+            Postal Code:
+          </label>
+          <div class="col-sm-4">
+            <input ng-model="customer.postalCode"
+                   ng-required="postalCodePattern" ng-pattern="postalCodePattern"
+                   id="edit-postalCode" name="postalCode"
+                   class="form-control" type="text"/>
+          </div>
+          <!--
+            Write an ng-messages block which shows when postalCode has been
+            touched and has a validation error. Don't forget messages for both
+            required and pattern validations. The message for a pattern violation
+            should use postalCodeValidationMessage (see the controller for details)
+            The containing div should have a class of col-sm-5.
+          -->
+          <div class="col-sm-5" ng-messages="showMessage(customerEditForm.postalCode)">
+            <div ng-message="required">
+              Please enter a postal code.
+            </div>
+            <div ng-message="pattern">
+              {{ postalCodeValidationMessage }}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-country">
+            Country:
+          </label>
+          <div class="col-sm-4">
+            <input ng-model="customer.country" required pattern="[A-Z][A-Za-z]+"
+                   id="edit-country" name="country"
+                   class="form-control" type="text"/>
+          </div>
+          <!--
+            Write an ng-messages block which shows when country has been
+            touched and has a validation error. Don't forget messages for both
+            required and pattern validations.
+            The containing div should have a class of col-sm-5.
+          -->
+          <div class="col-sm-5" ng-messages="showMessage(customerEditForm.country)">
+            <div ng-message="required">
+              The Country is required.
+            </div>
+            <div ng-message="pattern">
+              The Country should be a name or an abbreviation
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-phone">Phone:</label>
+          <div class="col-sm-4">
+            <input ng-model="customer.phone" required
+                   id="edit-phone" name="phone"
+                   class="form-control" type="text"/>
+          </div>
+          <!--
+            Write an ng-messages block which shows when customerID has been
+            touched and has a validation error.
+            The containing div should have a class of col-sm-5.
+          -->
+          <div class="col-sm-5" ng-messages="showMessage(customerEditForm.phone)">
+            <div ng-message="required">
+              The Phone Number is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-fax">Fax:</label>
+          <div class="col-sm-4">
+            <input ng-model="customer.fax"
+                   id="edit-fax" name="fax"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

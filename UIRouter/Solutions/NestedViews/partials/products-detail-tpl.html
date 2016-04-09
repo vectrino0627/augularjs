@@ -1,0 +1,27 @@
+<ul class="list-unstyled" ng-if="product">
+  <li class="row"><span class="text-right col-sm-6 col-align-right">Product name: </span><span
+      class="col-sm-6 col-align-left">{{product.productName}}</span></li>
+  <li class="row"><span class="text-right col-sm-6 col-align-right">Units in stock: </span><span
+      class="col-sm-6 col-align-left">{{product.unitsInStock}}</span></li>
+  <li class="row"><span class="text-right col-sm-6 col-align-right">Unit price: </span><span
+      class="col-sm-6 col-align-left">{{product.unitPrice}}</span></li>
+  <li class="row"><span class="text-right col-sm-6 col-align-right">Units on order: </span><span
+      class="col-sm-6 col-align-left">{{product.unitsOnOrder}}</span></li>
+  <li class="row"><span class="text-right col-sm-6 col-align-right">Supplier: </span><span
+      class="col-sm-6 col-align-left"><a ui-sref="products.detail.supplier">{{product.supplier.companyName}}</a></span></li>
+  <li class="row"><span class="text-right col-sm-6 col-align-right">Category: </span><span
+      class="col-sm-6 col-align-left">{{product.category.categoryName}}</span></li>
+</ul>
+
+<!--
+Add a div with a class of row.
+Inside the div, add another div with a ui-view attribute.
+
+Then go to js/controllers.js
+-->
+
+<hr/>
+<div class="row">
+  <div ui-view>
+  </div>
+</div>

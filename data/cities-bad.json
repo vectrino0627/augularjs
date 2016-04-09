@@ -1,0 +1,78 @@
+[
+  {
+    "name" : "New York",
+    "state": "New York",
+    "population" : 8336697
+
+  },
+  {
+    "name" : Newark",
+    "state" : "New Jersey",
+    "population" : 277727
+  },
+  {
+    "name" : "Boston",
+    "state" : "Massachusetts",
+    "population" :636479
+  },
+  {
+    "name" : "Philadelphia",
+    "state" : "Pennsylvania",
+    "population" :1547607
+  },
+  {
+    "name" : "Baltimore",
+    "state" : "Maryland",
+    "population" :621342
+  },
+  {
+    "name" : "Washington",
+    "state" : "District of Columbia",
+    "population" :632323
+  },
+  {
+    "name" : "Los Angeles",
+    "state" : "California",
+    "population" : 3857799
+  },
+  {
+    "name" : "Chicago",
+    "state" : "Illinois",
+    "population" : 2714856
+  },
+  {
+    "name" : "Houston",
+    "state" : "Texas",
+    "population" : 2160821
+  },
+  {
+    "name" : "Phoenix",
+    "state" : "Arizona",
+    "population" : 1488750
+  },
+  {
+    "name" : "San Antonio",
+    "state" : "Texas",
+    "population" : 1382951
+  },
+  {
+    "name" : "San Diego",
+    "state" : "California",
+    "population" : 1338348
+  },
+  {
+    "name" : "Dallas",
+    "state" : "Texas",
+    "population" : 1241162
+  },
+  {
+    "name" : "San Jose",
+    "state" : "California",
+    "population" : 982765
+  },
+  {
+    "name" : "San Francisco",
+    "state" : "California",
+    "population" : 825863
+  }
+]

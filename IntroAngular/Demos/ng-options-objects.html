@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="optionsApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Looking at ngOptions</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="ng-options-objects.js"></script>
+</head>
+<body>
+<div ng-controller="OptionsCtrl">
+  <label for="someNameId">Pick a name: </label>
+  <select name="someName" id="someNameId" ng-model="selectName"
+          ng-options="person.name for person in people track by person.id">
+    <option value="">Please pick a name</option>
+  </select>
+
+</div>
+
+</body>
+</html>

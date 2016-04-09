@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="citiesApp">
+<head>
+  <title>Preventing FOUC</title>
+  <style>
+    #list-container > div {
+      display: inline-block;
+      width: 170px
+    }
+  </style>
+</head>
+<body>
+<div ng-controller="CityListCtrl">
+
+  <label for="filter-city">City Filter: </label><input type="text" id="filter-city" ng-model="filterCity"
+                                                       autofocus="true"/>
+
+  <div id="list-container">
+    <div id="original-list">
+      <h2>Original</h2>
+      <ul>
+        <li ng-repeat="city in cities | filter: filterCity | orderBy: 'name'">{{ city.name }}</li>
+      </ul>
+    </div>
+    <div id="bind-list">
+      <h2>ng-bind</h2>
+      <ul>
+        <li ng-repeat="city in cities | filter: filterCity | orderBy: 'name'" ng-bind="city.name"></li>
+      </ul>
+
+    </div>
+    <div id="cloak-list">
+      <h2>ng-cloak</h2>
+      <ul ng-cloak>
+        <li ng-repeat="city in cities | filter: filterCity | orderBy: 'name'">{{ city.name }}</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<script src="/common/js/angular/angular.js"></script>
+<script src="lifecycle-cloak.js"></script>
+</body>
+</html>

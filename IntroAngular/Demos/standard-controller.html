@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+<head lang="en">
+  <title>Our first controller</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="standard-controller.js"></script>
+</head>
+<body ng-controller="FirstCtrl">
+
+<h2>A list of names: </h2>
+<ul>
+  <li ng-repeat="personName in names">{{ personName }}</li>
+</ul>
+</body>
+</html>

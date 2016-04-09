@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="empDetailApp">
+<head>
+  <title>Using the ng-src attribute</title>
+</head>
+<body>
+
+<div ng-controller="EmpCtrl">
+  <ul>
+    <li>{{employee.firstName}} {{employee.lastName}}</li>
+    <li>Hired on {{employee.hireDate | date}}</li>
+    <li>Phone: {{employee.homePhone}}</li>
+  </ul>
+  <div style="float:left">
+    <!-- Swap this... -->
+    <img src="../../images/{{employee.photoPath}}"/>
+
+    <!-- For one of these... -->
+    <!--<img ng-src="{{'../../images/' + employee.photoPath}}"/>-->
+    <!--<img src="../../images/rosie-the-riveter.jpg"/>-->
+
+    <!-- Then check Chrome's Network tab! -->
+  </div>
+</div>
+
+<script src="/common/js/angular/angular.js"></script>
+<script src="using-sources.js"></script>
+</body>
+</html>

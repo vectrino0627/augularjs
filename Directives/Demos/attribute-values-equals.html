@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="dirApp">
+<head>
+  <title>Directives</title>
+</head>
+<body>
+<div ng-controller="DirCtrl">
+  <p>Attribute-based directives</p>
+  <ul>
+    <li>Tag with an attribute: </li>
+    <li><greetings person-name="demoName1"/></li>
+    <li>Custom attribute with a value</li>
+    <li greet-person="demoName2"></li>
+    <li>Accessing object data</li>
+    <li greet-person-object="demoPerson"></li>
+    <li at-greet-person-object="{{demoPerson}}"></li>
+
+  </ul>
+</div>
+
+<script src="/common/js/angular/angular.js"></script>
+<script src="attribute-values-equals.js"></script>
+</body>
+</html>

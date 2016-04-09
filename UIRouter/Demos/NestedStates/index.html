@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="uiRouterMod">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Customer Browsing with UI Router</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/underscore/underscore.js"></script>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="/common/js/angular-ui-router/angular-ui-router.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="/local/customer-services.js"></script>
+</head>
+<body>
+
+<div ng-controller="MainCtrl" class="container-fluid">
+  <div class="row banner">
+    <div class="col-sm-12 text-center">
+      <h2>Customer Search</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3 col-right-border full-height">
+      <div class="form-horizontal" style="margin-top:5px">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="companyName">Company Name: </label>
+
+          <div class="col-sm-8">
+            <input ng-model="fobj.companyName" id="companyName" type="text" class="form-control"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="contactName">Contact Name: </label>
+
+          <div class="col-sm-8">
+            <input ng-model="fobj.contactName" id="contactName" type="text" class="form-control"/>
+          </div>
+        </div>
+
+        <div class="form-group"><label class="col-sm-4 control-label" for="city">City: </label>
+
+          <div class="col-sm-8">
+            <select ng-model="fobj.city" ng-options="city for city in cities" ng-change="resetCities(fobj.city)"
+                    class="form-control" name="city" id="city">
+              <option value="">All Cities</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group"><label class="col-sm-4 control-label" for="country">Country: </label>
+
+          <div class="col-sm-8">
+            <select ng-model="fobj.country" ng-options="country for country in countries"
+                    ng-change="limitCities(fobj.country)" class="form-control" name="country" id="country">
+              <option value="">All Countries</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ui-view></div>
+  </div>
+
+</div>
+</body>
+</html>

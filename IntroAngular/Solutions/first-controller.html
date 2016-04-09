@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- Make sure that ng-app is set to the name of your application (try 'teamApp') -->
+<html ng-app="teamApp">
+<head>
+  <title>Exercise: Setting up a controller</title>
+  <script src="/common/js/angular/angular.js"></script>
+
+  <!-- Add a reference to the controllers file.  -->
+  <script src="js/controllers.js"></script>
+</head>
+<!-- Add a controller to the body of the document. Use the name of the
+     controller you defined in controller.js (try 'TeamCtrl').
+     Move the definition of teams to js/controllers.js -->
+<body ng-controller="TeamCtrl">
+<form>
+  <label for="fTeam">Filter teams: </label>
+  <input id="fTeam" type="text" ng-model="fTeam" />
+</form>
+
+<p>A list of teams: </p>
+<ul>
+  <li ng-repeat="teamName in teams | filter: fTeam">{{teamName}}</li>
+</ul>
+</body>
+</html>

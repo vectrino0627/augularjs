@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="valuesApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Providers: Values</title>
+</head>
+<body>
+
+<div ng-controller="MainCtrl" style="border: red solid 2px; margin-bottom: 5px">
+  <p>This application was authored by {{ authorName }}</p>
+
+  <p>Published: {{ pYear }}</p>
+</div>
+
+<div ng-controller="OtherCtrl" style="border: blue solid 2px">
+  <p>A different application authored by: {{ authorName }}</p>
+
+  <p>Published: {{ pYear }}</p>
+</div>
+<script src="/common/js/angular/angular.js"></script>
+<script src="values.js"></script>
+</body>
+</html>

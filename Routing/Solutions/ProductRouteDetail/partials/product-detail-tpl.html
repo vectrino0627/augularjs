@@ -1,0 +1,18 @@
+<div>
+  <!-- Build a template to display useful information about the product
+       Make sure to include at least the product name, unit price, units in stock -->
+  <ul>
+    <li>{{product.productName}}
+      <ul>
+        <li>Price per unit: {{product.unitPrice}}</li>
+        <li>Stock: {{product.unitsInStock}}</li>
+        <li>Inventory value: {{product.unitPrice * product.unitsInStock | currency}}</li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- Provide a way to get back to the main page. -->
+  <button ng-click="goBack()">Return</button>
+  <button ng-click="findPrevious(product)">Previous Product</button>
+  <button ng-click="findNext(product)">Next Product</button>
+</div>

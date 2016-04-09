@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Jenny Sparks",
+    "gender": "female",
+    "age": 15
+  },
+  {
+    "name": "Lucas Trent",
+    "gender": "male",
+    "age": 35
+  },
+  {
+    "name": "Jack Hawksmoor",
+    "gender": "male",
+    "age": 42
+  },
+  {
+    "name": "Jeroen Thornedike",
+    "gender": "male",
+    "age": 28
+  },
+  {
+    "name": "Angela Spica",
+    "gender": "female",
+    "age": 44
+  },
+  {
+    "name": "Shen Li-Min",
+    "gender": "female",
+    "age": 22
+  },
+  {
+    "name": "Spider Jerusalem",
+    "gender": "male",
+    "age": 40
+  },
+  {
+    "name": "Jakita Wagner",
+    "gender": "female",
+    "age": 38
+  },
+  {
+    "name": "Elijah Snow",
+    "gender": "male",
+    "age": 48
+  },
+  {
+    "name": "Ambrose Chase",
+    "gender": "male",
+    "age": 25
+  }
+]

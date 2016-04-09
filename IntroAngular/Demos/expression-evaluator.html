@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="exprMod">
+<head>
+  <title>Expression Evaluator</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script>
+    function ExprCtrl( $scope ) {
+      var exprs = $scope.exprs = [];
+      $scope.expr = '2 + 2';
+      $scope.addExp = function ( expr ) {
+        exprs.push( expr );
+      };
+      $scope.removeExp = function ( index ) {
+        exprs.splice( index, 1 );
+      };
+    }
+
+    angular.module( 'exprMod', [] ).controller( 'ExprCtrl', ExprCtrl );
+  </script>
+</head>
+<body>
+
+<div ng-controller="ExprCtrl">
+
+    <label for="ang-expression">Enter expression here: </label>
+    <input id="ang-expression" size="80" type="text"
+           style="font-family: Courier New, Courier, monospace" ng-model="expr"/>
+    <button id="evalBtn" ng-click="addExp(expr)">Eval!</button>
+
+  <h3>Output: </h3>
+
+  <div id="output">
+    <ul>
+      <li ng-repeat="expr in exprs track by $index">
+        [ <a href="" ng-click="removeExp($index)">X</a> ]
+        <code>{{expr}}</code> => <span ng-bind="$parent.$eval(expr)"></span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

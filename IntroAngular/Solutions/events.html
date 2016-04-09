@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="teamApp">
+<head>
+  <title>Exercise: Setting up a controller</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="events.js"></script>
+</head>
+<body ng-controller="TeamCtrl">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-sm-offset-2">
+      <h2>A list of teams: </h2>
+      <ul>
+        <li ng-repeat="teamName in teams | filter: fTeam">{{teamName}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <form class="form-horizontal col-sm-12">
+      <div class="form-group">
+        <label for="fTeam" class="control-label col-sm-2">Filter teams: </label>
+
+        <div class="col-sm-2">
+          <input ng-model="fTeam" class="form-control" id="fTeam" type="text"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <!-- Add a label
+        for: newTeam
+        content: Add a new team
+        classes: control-label col-sm-2
+        -->
+        <label for="newTeam" class="control-label col-sm-2">
+          Add a new team:
+        </label>
+
+        <div class="col-sm-2">
+          <!-- Add a text input field
+          ng-model: newTeam
+          id: newTeam
+          type: text
+          class: form-control
+          -->
+          <input ng-model="newTeam" class="form-control" id="newTeam"
+                 type="text"/>
+        </div>
+        <!-- Add a button to click on to add the new team
+        The button should have classes "btn" and "btn-small"
+        -->
+        <button ng-click="addTeam(newTeam)" id="addBtn" class="btn btn-small">
+          Add team
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label for="dropTeam" class="control-label col-sm-2">
+          Remove a team:
+        </label>
+
+        <div class="col-sm-2">
+          <!-- Add a select list of all the teams, it will be used to drop teams
+               from the list.
+           Hint: look at select/ngOptions under directives in the API docs.
+           Don't forget the ng-model
+           And the id should be "dropTeam" and the class should be "form-control"
+           -->
+          <select ng-model="dropTeam"
+                  ng-options="teamName for teamName in teams"
+                  id="dropTeam" class="form-control">
+            <option value="">Please select a team...</option>
+          </select>
+        </div>
+        <!-- Add a button to click on to remove the selected team
+        The button should have classes "btn" and "btn-small"
+        -->
+        <button ng-click="delTeam(dropTeam)" id="dropBtn" class="btn btn-small">
+          Drop team
+        </button>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-1 col-sm-offset-2">
+          <!-- Challenge: restore the dropped teams, set the button here
+           Add the usual classes to the button
+           -->
+          <button ng-click="restoreTeams()" id="restoreBtn"
+                  class="btn btn-small">
+            Restore dropped teams
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

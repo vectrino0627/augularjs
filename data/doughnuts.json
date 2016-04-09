@@ -1,0 +1,67 @@
+[
+  {
+    "doughnutID": 1,
+    "base": "cake",
+    "icing": "glazed",
+    "name": "glazed cake"
+  },
+  {
+    "doughnutID": 2,
+    "base": "raised",
+    "icing": "glazed",
+    "name": "glazed"
+  },
+  {
+    "doughnutID": 3,
+    "base": "cake",
+    "icing": "vanilla",
+    "name": "vanilla cake"
+  },
+  {
+    "doughnutID": 4,
+    "base": "raised",
+    "icing": "vanilla",
+    "name": "vanilla"
+  },
+  {
+    "doughnutID": 5,
+    "base": "cake",
+    "icing": "chocolate",
+    "name": "chocolate cake"
+  },
+  {
+    "doughnutID": 6,
+    "base": "raised",
+    "icing": "chocolate",
+    "name": "chocolate"
+  },
+  {
+    "doughnutID": 7,
+    "base": "raised",
+    "icing": "glazed",
+    "filling": "lemon",
+    "name": "lemon-filled"
+  },
+  {
+    "doughnutID": 8,
+    "base": "raised",
+    "icing": "powdered",
+    "filling": "strawberry",
+    "name": "jelly"
+  },
+  {
+    "doughnutID": 9,
+    "base": "cake",
+    "icing": "chocolate",
+    "topping": "sprinkles",
+    "name": "sprinkles"
+  },
+  {
+    "doughnutID": 10,
+    "base": "cake",
+    "icing": "chocolate",
+    "filling": "chocolate",
+    "topping": "chocolate sprinkles",
+    "name": "death by chocolate"
+  }
+]

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="citiesApp">
+<head>
+  <title>Standard index.html file for Angular</title>
+  <style>
+    /*[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {*/
+    body[ng-cloak] {
+      display: none !important;
+    }
+  </style>
+</head>
+<!-- The Angular docs say that this is less preferable, as it prevents
+     progressive rendering of the page. -->
+<body ng-cloak >
+<div ng-controller="CityListCtrl">
+
+  <label for="filter-city">City Filter: </label><input type="text" id="filter-city" ng-model="filterCity" autofocus="true"/>
+
+  <h2>Original</h2>
+  <ul>
+    <li ng-repeat="city in cities | filter: filterCity | orderBy: 'name'">{{ city.name }}</li>
+  </ul>
+
+</div>
+<script src="/common/js/angular/angular.js"></script>
+<script src="lifecycle-cloak.js"></script>
+</body>
+</html>

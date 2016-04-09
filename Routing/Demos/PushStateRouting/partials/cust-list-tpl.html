@@ -1,0 +1,17 @@
+<table border="1">
+  <thead>
+  <tr>
+    <th>Company</th>
+    <th>Country</th>
+    <th>Phone</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr ng-repeat="customer in customers" ng-click="fetchCustomer(customer)" class="clickable">
+    <td>{{customer.companyName}}</td>
+    <td>{{customer.country}}</td>
+    <td>{{customer.phone}}</td>
+  </tr>
+  </tbody>
+</table>

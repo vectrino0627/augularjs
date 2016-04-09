@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="tabsDemo">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>An Angular Application</title>
+  <!--<link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>-->
+  <link rel="stylesheet" href="/New/commonl/local.css"/>
+  <script src="/New/commonar/angular.js"></script>
+  <script src="dir-controllers.js"></script>
+</head>
+<body>
+<tab-container>
+  <tab-pane title="Hello">
+    <h4>Hello</h4>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, accusamus dolorum eaque eveniet expedita fugiat, illum, ipsa ipsam labore laboriosam minima minus nisi quae quaerat quam qui temporibus vero voluptates.</p>
+  </tab-pane>
+
+  <tab-pane title="Mundo">
+    <h4>World</h4>
+    <em>Some gobbledygook</em>
+
+    <p><a href="" ng-click="i = i+1">counter: {{ i || 0 }}</a></p>
+  </tab-pane>
+</tab-container>
+
+</body>
+</html>

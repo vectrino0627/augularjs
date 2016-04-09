@@ -1,0 +1,90 @@
+<form class="form-horizontal" name="employeeForm" novalidate="novalidate">
+  <div id="form-rows" class="col-sm-4 col-right-border">
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="firstName">First
+        Name:
+      </label>
+
+      <div class="col-sm-9">
+        <input ng-model="emp.firstName"
+               ng-model-options="{updateOn: 'blur'}"
+               class="form-control"
+               id="firstName"
+               name="firstName" type="text"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="lastName">Last
+        Name:
+      </label>
+
+      <div class="col-sm-9">
+        <input ng-model="emp.lastName" class="form-control" id="lastName"
+               name="lastName" type="text"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label"
+             for="address">Address:
+      </label>
+
+      <div class="col-sm-9">
+        <input ng-model="emp.address" class="form-control" id="address"
+               name="address" type="text"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="city">City:</label>
+
+      <div class="col-sm-9">
+        <input ng-model="emp.city" class="form-control" id="city"
+               name="city" type="text"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label"
+             for="region">State/Region:
+      </label>
+
+      <div class="col-sm-9">
+        <input ng-model="emp.region" class="form-control" id="region"
+               name="region" type="text"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label"
+             for="country">Country:
+      </label>
+
+      <div class="col-sm-9">
+        <input ng-model="emp.country" class="form-control" id="country"
+               name="country" type="text"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="postalCode">Postal
+        Code:
+      </label>
+
+      <div class="col-sm-9">
+        <input ng-model="emp.postalCode" class="form-control"
+               id="postalCode" name="postalCode" type="text"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="title">Job
+        Title:
+      </label>
+
+      <div class="col-sm-9">
+        <input ng-model="emp.title" class="form-control" id="title"
+               name="title" type="text"/>
+      </div>
+    </div>
+  </div>
+</form>

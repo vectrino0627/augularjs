@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html ng-app="customerApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>An Angular Application</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="../lib/js/customer-services.js"></script>
+  <script src="update-on-blur.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row text-center" style="margin-bottom: 15px">
+    <h2>The Northwind Trading Company</h2>
+  </div>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Customers</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Search</a></li>
+        <li><a href="#">Edit</a></li>
+        <li><a href="#">Add</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div ng-controller="CustomerCtrl" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-right-border full-height">
+      <form name="customerSearchForm" class="form-horizontal"
+            style="margin-top:5px">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="search-companyName">
+            Company Name:
+          </label>
+          <div class="col-sm-8">
+
+            <!--
+            Add an input text field with the following attributes:
+            ng-model: dbobj.companyName
+            ng-model-options: Set it to update only after one second has passed
+            id: search-companyName
+            name: companyName
+            class: form-control
+            -->
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="search-contactName">
+            Contact Name:
+          </label>
+          <div class="col-sm-8">
+
+            <!--
+            Add an input text field with the following attributes:
+            ng-model: dbobj.contactName
+            ng-model-options: Set it to update only after one second has passed
+            id: search-contactName
+            name: contactName
+            class: form-control
+            -->
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="search-city">
+            City:
+          </label>
+          <div class="col-sm-8">
+            <select ng-model="fobj.city" ng-options="city for city in cities"
+                    ng-change="resetCities(fobj.city)"
+                    class="form-control" name="city" id="search-city">
+              <option value="">All Cities</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="search-country">
+            Country:
+          </label>
+          <div class="col-sm-8">
+            <select ng-model="fobj.country"
+                    ng-options="country for country in countries"
+                    ng-change="limitCities(fobj.country)"
+                    class="form-control" name="country" id="search-country">
+              <option value="">All Countries</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-sm-3 col-right-border full-height y-scroller">
+      <ul style="margin-top:10px">
+        <li class="blank"
+            ng-repeat="customer in customers | filter:fobj"
+            ng-click="editCustomer(customer)">
+          {{ customer.companyName }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-sm-6 full-height" ng-show="customer">
+      <form name="customerEditForm" class="form-horizontal"
+            style="margin-top:5px">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-customerID">
+            Customer ID:
+          </label>
+          <div class="col-sm-5">
+
+            <!--
+            Add an input text field with the following attributes:
+            ng-model: customer.customerID
+            ng-model-options: Set it to update only after blurring away
+            id: edit-customerID
+            name: customerID
+            class: form-control
+            -->
+
+          </div>
+          <div class="col-sm-4">{{ customer.customerID }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-companyName">
+            Company Name:
+          </label>
+          <div class="col-sm-5">
+
+            <!--
+            Add an input text field with the following attributes:
+            ng-model: customer.companyName
+            ng-model-options: Set it to update only after blurring away
+            id: edit-companyName
+            name: companyName
+            class: form-control
+            -->
+
+          </div>
+          <div class="col-sm-4">{{ customer.companyName }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-contactName">
+            Contact Name:
+          </label>
+          <div class="col-sm-5">
+
+            <!--
+            Add an input text field with the following attributes:
+            ng-model: customer.contactName
+            ng-model-options: Set it to update only after blurring away
+            id: edit-contactName
+            name: contactName
+            class: form-control
+            -->
+
+          </div>
+          <div class="col-sm-4">{{ customer.contactName }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-contactTitle">
+            Contact Title:
+          </label>
+          <div class="col-sm-5">
+            <input ng-model="customer.contactTitle"
+                   id="edit-contactTitle" name="edit-contactTitle"
+                   class="form-control" type="text"/>
+          </div>
+          <div class="col-sm-4">{{ customer.contactTitle }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-address">
+            Address:
+          </label>
+          <div class="col-sm-5">
+            <input ng-model="customer.address"
+                   id="edit-address" name="edit-address"
+                   class="form-control" type="text"/>
+          </div>
+          <div class="col-sm-4">{{ customer.address }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-city">City:</label>
+          <div class="col-sm-5">
+            <input ng-model="customer.city"
+                   id="edit-city" name="edit-city"
+                   class="form-control" type="text"/>
+          </div>
+          <div class="col-sm-4">{{ customer.city }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-region">
+            Region/State:
+          </label>
+          <div class="col-sm-5">
+            <input ng-model="customer.region"
+                   id="edit-region" name="edit-region"
+                   class="form-control" type="text"/>
+          </div>
+          <div class="col-sm-4">{{ customer.region }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-postalCode">
+            Postal Code:
+          </label>
+          <div class="col-sm-5">
+            <input ng-model="customer.postalCode"
+                   id="edit-postalCode" name="edit-postalCode"
+                   class="form-control" type="text"/>
+          </div>
+          <div class="col-sm-4">{{ customer.postalCode }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-country">
+            Country:
+          </label>
+          <div class="col-sm-5">
+            <input ng-model="customer.country"
+                   id="edit-country" name="edit-country"
+                   class="form-control" type="text"/>
+          </div>
+          <div class="col-sm-4">{{ customer.country }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-phone">Phone:</label>
+          <div class="col-sm-5">
+            <input ng-model="customer.phone"
+                   id="edit-phone" name="edit-phone"
+                   class="form-control" type="text"/>
+          </div>
+          <div class="col-sm-4">{{ customer.phone }}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="edit-fax">Fax:</label>
+          <div class="col-sm-5">
+            <input ng-model="customer.fax"
+                   id="edit-fax" name="edit-fax"
+                   class="form-control" type="text"/>
+          </div>
+          <div class="col-sm-4">{{ customer.fax }}</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

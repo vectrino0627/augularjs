@@ -1,0 +1,9 @@
+<div class="col-sm-3 col-right-border full-height y-scroller">
+  <ul style="margin-top:10px">
+    <li class="blank"
+        ng-repeat="customer in customers | filter:fobj as results"
+        ng-click="selectCustomer(customer)">
+      {{ customer.companyName }}
+    </li>
+  </ul>
+</div>

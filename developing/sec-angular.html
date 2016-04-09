@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>My Second AngularJS Webpage!</title>
+
+    <script src="/common/js/angular/angular.js"></script>
+    <script src="/common/js/angular-ui-router/angular-ui-router.js"></script>
+    <script src="sec-angular.js"></script>
+
+
+</head>
+<body ng-app="secApp">
+    <div>
+        <div ng-controller="secCtrl">
+            <p>let's started!</p>
+            <p>{{abc}}</p>
+            <p>(~abc~)</p>
+
+            <input type="text" ng-model="value"/>
+
+            <br>
+
+            <p>{{value}}</p>
+            <p>what's up now</p>
+            <p>{{message}}</p>
+        </div>
+    </div>
+</body>
+</html>

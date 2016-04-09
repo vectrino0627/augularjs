@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html ng-app="filterApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Exercise: Custom reusable filters</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="using-filters.js"></script>
+</head>
+<body>
+
+<div ng-controller="StateCtrl" class="container-fluid">
+  <div class="row banner">
+    <div ng-controller="StateStatusCtrl" class="col-sm-12 text-center">
+      <h2 ng-if="selectedState">{{ selectedState.name }}</h2>
+
+      <h2 ng-if="! selectedState">Working with States</h2>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div ng-controller="StateSearchCtrl"
+         class="col-sm-3 col-right-border full-height">
+      <div style="margin-top: 5px" class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="name">State Name:</label>
+
+          <div class="col-sm-8">
+            <input ng-model="filterObj.name" class="form-control" type="text"
+                   name="name"
+                   id="name"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="capital">Capital:</label>
+
+          <div class="col-sm-8">
+            <input ng-model="filterObj.capital" class="form-control"
+                   name="capital" id="capital"
+                   type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="mostPopulousCity">Most
+            Populous City:
+          </label>
+
+          <div class="col-sm-8">
+            <input ng-model="filterObj.mostPopulousCity" class="form-control"
+                   type="text"
+                   name="mostPopulousCity"
+                   id="mostPopulousCity"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="population">Population:
+          </label>
+
+          <div class="col-sm-8">
+            <input ng-model="filterObj.population" class="form-control"
+                   type="text" name="population"
+                   id="population"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="squareMiles">Area (sq.
+            mi.):
+          </label>
+
+          <div class="col-sm-8">
+            <input ng-model="filterObj.squareMiles" class="form-control"
+                   type="text" name="squareMiles"
+                   id="squareMiles"/>
+          </div>
+        </div>
+
+        <div class="col-sm-1 col-sm-offset-4">
+          <button ng-click="changeSearch(filterObj)"
+                  class="btn btn-default btn-sm">Filter!
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div ng-controller="StateListCtrl"
+         class="col-sm-3 col-right-border y-scroller full-height">
+      <ul ng-click="selectState($event)" style="margin-top: 10px">
+
+        <!--
+        Pipe states through two filters:
+        greaterThan, using filterObj as the filter and filtering on population and squareMiles
+        startsWith, using filterObj as the filter, and filtering on name, capital, and mostPopulousCity
+        -->
+        <li class="blank"
+            ng-repeat="state in states | greaterThan:filterObj:['population', 'squareMiles'] | startsWith:filterObj:['name', 'capital', 'mostPopulousCity']">
+          {{state.name}}
+        </li>
+      </ul>
+    </div>
+
+    <!-- The item view, if you will -->
+    <div ng-controller="StateDetailCtrl" class="col-sm-6">
+      <div ng-if="selectedState" class="item-top-margin">
+        <ul class="list-unstyled">
+          <li class="row"><span class="text-right col-sm-6 col-align-right">State Name: </span><span
+              class="col-sm-6 col-align-left">{{selectedState.name}}</span></li>
+          <li class="row"><span class="text-right col-sm-6 col-align-right">State Capital: </span><span
+              class="col-sm-6 col-align-left">{{selectedState.capital}}</span>
+          </li>
+          <li class="row"><span class="text-right col-sm-6 col-align-right">Population: </span><span
+              class="col-sm-6 col-align-left">{{selectedState.population | number}}</span>
+          </li>
+        </ul>
+
+        <!-- Event handlers for browsing through the list of states -->
+        <div class="row">
+          <span class="col-sm-6 text-right col-align-right"><button
+              type="button" class="btn btn-default btn-sm"
+              ng-click="nextPrev(selectedState, -1)">&laquo;
+            Previous
+          </button></span>
+          <span class="col-sm-6 col-align-left"><button type="button"
+                                                        class="btn btn-default btn-sm"
+                                                        ng-click="nextPrev(selectedState, 1)">
+            Next &raquo;</button></span>
+        </div>
+      </div>
+      <div ng-if="!selectedState" class="item-top-margin">
+        <p class="text-center">State information will appear here.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

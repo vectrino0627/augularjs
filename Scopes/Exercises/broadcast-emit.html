@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="eventApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Exercise: Broadcasting and emitting events</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="broadcast-emit.js"></script>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <style>
+    li.blank {
+      list-style-type: none;
+      cursor: pointer;
+    }
+
+    .main-scroller {
+      overflow-y: scroll;
+      height: 100vh;
+    }
+
+    .col-align-left {
+      padding-left: 2px;
+    }
+
+    .col-align-right {
+      padding-right: 2px;
+    }
+
+    .item-top-margin {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div ng-controller="MainCtrl" class="row">
+    <!-- Just a status bar for now -->
+    <div ng-controller="StatusCtrl" class="col-sm-12 text-center" style="border-bottom: 2px black groove">
+      <h2 ng-if="selectedState">{{ selectedState.name }}</h2>
+      <h2 ng-if="! selectedState">Working with States</h2>
+    </div>
+
+    <div class="col-sm-2 main-scroller">
+      <ul style="margin-top: 10px">
+        <li ng-click="selectState(state)"
+            class="blank" ng-repeat="state in states">{{ state.name }}</li>
+      </ul>
+    </div>
+
+    <!-- The item view, if you will -->
+    <div ng-controller="DetailCtrl" class="col-sm-4 col-sm-offset-2">
+      <div ng-if="selectedState" class="item-top-margin">
+        <ul class="list-unstyled">
+          <li class="row">
+            <span class="text-right col-sm-6 col-align-right">State Name: </span>
+            <span class="col-sm-6 col-align-left">{{selectedState.name}}</span>
+          </li>
+          <li class="row">
+            <span class="text-right col-sm-6 col-align-right">State Capital: </span>
+            <span class="col-sm-6 col-align-left" >{{selectedState.capital}}</span>
+          </li>
+          <li class="row">
+            <span class="text-right col-sm-6 col-align-right">Population: </span>
+            <span class="col-sm-6 col-align-left" >{{selectedState.population | number}}</span>
+          </li>
+        </ul>
+
+        <!-- Event handlers for browsing through the list of states -->
+        <div class="row">
+          <span class="col-sm-6 text-right col-align-right">
+            <button ng-click="nextPrev(selectedState, -1)"
+                    type="button" class="btn btn-default btn-sm">&laquo; Previous</button>
+          </span>
+          <span class="col-sm-6 col-align-left">
+            <button ng-click="nextPrev(selectedState, 1)"
+                    type="button" class="btn btn-default btn-sm">Next &raquo;</button>
+          </span>
+        </div>
+      </div>
+      <div ng-if="!selectedState" class="item-top-margin">
+        <p class="text-center">State information will appear here.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

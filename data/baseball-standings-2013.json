@@ -1,0 +1,272 @@
+[
+  {
+    "rank" : 1,
+    "won" : 93,
+    "lost" : 69,
+    "city" : "Detroit",
+    "team" : "Tigers",
+    "team_id" : "detroit-tigers",
+    "win_percentage" : ".574"
+  },
+  {
+    "rank" : 2,
+    "won" : 92,
+    "lost" : 70,
+    "city" : "Cleveland",
+    "team" : "Indians",
+    "team_id" : "cleveland-indians",
+    "win_percentage" : ".568"
+  },
+  {
+    "rank" : 3,
+    "won" : 86,
+    "lost" : 76,
+    "city" : "Kansas City",
+    "team" : "Royals",
+    "team_id" : "kansas-city-royals",
+    "win_percentage" : ".531"
+  },
+  {
+    "rank" : 4,
+    "won" : 66,
+    "lost" : 96,
+    "city" : "Minnesota",
+    "team" : "Twins",
+    "team_id" : "minnesota-twins",
+    "win_percentage" : ".407"
+  },
+  {
+    "rank" : 5,
+    "won" : 63,
+    "lost" : 99,
+    "city" : "Chicago",
+    "team" : "White Sox",
+    "team_id" : "chicago-white-sox",
+    "win_percentage" : ".389"
+  },
+  {
+    "rank" : 1,
+    "won" : 97,
+    "lost" : 65,
+    "city" : "Boston",
+    "team" : "Red Sox",
+    "team_id" : "boston-red-sox",
+    "win_percentage" : ".599"
+  },
+  {
+    "rank" : 2,
+    "won" : 92,
+    "lost" : 71,
+    "city" : "Tampa Bay",
+    "team" : "Rays",
+    "team_id" : "tampa-bay-rays",
+    "win_percentage" : ".564"
+  },
+  {
+    "rank" : 3,
+    "won" : 85,
+    "lost" : 77,
+    "city" : "Baltimore",
+    "team" : "Orioles",
+    "team_id" : "baltimore-orioles",
+    "win_percentage" : ".525"
+  },
+  {
+    "rank" : 3,
+    "won" : 85,
+    "lost" : 77,
+    "city" : "New York",
+    "team" : "Yankees",
+    "team_id" : "new-york-yankees",
+    "win_percentage" : ".525"
+  },
+  {
+    "rank" : 5,
+    "won" : 74,
+    "lost" : 88,
+    "city" : "Toronto",
+    "team" : "Blue Jays",
+    "team_id" : "toronto-blue-jays",
+    "win_percentage" : ".457"
+  },
+  {
+    "rank" : 1,
+    "won" : 96,
+    "lost" : 66,
+    "city" : "Oakland",
+    "team" : "Athletics",
+    "team_id" : "oakland-athletics",
+    "win_percentage" : ".593"
+  },
+  {
+    "rank" : 2,
+    "won" : 91,
+    "lost" : 72,
+    "city" : "Texas",
+    "team" : "Rangers",
+    "team_id" : "texas-rangers",
+    "win_percentage" : ".558"
+  },
+  {
+    "rank" : 3,
+    "won" : 78,
+    "lost" : 84,
+    "city" : "Los Angeles",
+    "team" : "Angels",
+    "team_id" : "los-angeles-angels",
+    "win_percentage" : ".481"
+  },
+  {
+    "rank" : 4,
+    "won" : 71,
+    "lost" : 91,
+    "city" : "Seattle",
+    "team" : "Mariners",
+    "team_id" : "seattle-mariners",
+    "win_percentage" : ".438"
+  },
+  {
+    "rank" : 5,
+    "won" : 51,
+    "lost" : 111,
+    "city" : "Houston",
+    "team" : "Astros",
+    "team_id" : "houston-astros",
+    "win_percentage" : ".315"
+  },
+  {
+    "rank" : 1,
+    "won" : 97,
+    "lost" : 65,
+    "city" : "St. Louis",
+    "team" : "Cardinals",
+    "team_id" : "st-louis-cardinals",
+    "win_percentage" : ".599"
+  },
+  {
+    "rank" : 2,
+    "won" : 94,
+    "lost" : 68,
+    "city" : "Pittsburgh",
+    "team" : "Pirates",
+    "team_id" : "pittsburgh-pirates",
+    "win_percentage" : ".580"
+  },
+  {
+    "rank" : 3,
+    "won" : 90,
+    "lost" : 72,
+    "city" : "Cincinnati",
+    "team" : "Reds",
+    "team_id" : "cincinnati-reds",
+    "win_percentage" : ".556"
+  },
+  {
+    "rank" : 4,
+    "won" : 74,
+    "lost" : 88,
+    "city" : "Milwaukee",
+    "team" : "Brewers",
+    "team_id" : "milwaukee-brewers",
+    "win_percentage" : ".457"
+  },
+  {
+    "rank" : 5,
+    "won" : 66,
+    "lost" : 96,
+    "city" : "Chicago",
+    "team" : "Cubs",
+    "team_id" : "chicago-cubs",
+    "win_percentage" : ".407"
+  },
+  {
+    "rank" : 1,
+    "won" : 96,
+    "lost" : 66,
+    "city" : "Atlanta",
+    "team" : "Braves",
+    "team_id" : "atlanta-braves",
+    "win_percentage" : ".593"
+  },
+  {
+    "rank" : 2,
+    "won" : 86,
+    "lost" : 76,
+    "city" : "Washington",
+    "team" : "Nationals",
+    "team_id" : "washington-nationals",
+    "win_percentage" : ".531"
+  },
+  {
+    "rank" : 3,
+    "won" : 74,
+    "lost" : 88,
+    "city" : "New York",
+    "team" : "Mets",
+    "team_id" : "new-york-mets",
+    "win_percentage" : ".457"
+  },
+  {
+    "rank" : 4,
+    "won" : 73,
+    "lost" : 89,
+    "city" : "Philadelphia",
+    "team" : "Phillies",
+    "team_id" : "philadelphia-phillies",
+    "win_percentage" : ".451"
+  },
+  {
+    "rank" : 5,
+    "won" : 62,
+    "lost" : 100,
+    "city" : "Miami",
+    "team" : "Marlins",
+    "team_id" : "miami-marlins",
+    "win_percentage" : ".383"
+  },
+  {
+    "rank" : 1,
+    "won" : 92,
+    "lost" : 70,
+    "city" : "Los Angeles",
+    "team" : "Dodgers",
+    "team_id" : "los-angeles-dodgers",
+    "win_percentage" : ".568"
+  },
+  {
+    "rank" : 2,
+    "won" : 81,
+    "lost" : 81,
+    "city" : "Arizona",
+    "team" : "Diamondbacks",
+    "team_id" : "arizona-diamondbacks",
+    "win_percentage" : ".500"
+  },
+  {
+    "rank" : 3,
+    "won" : 76,
+    "lost" : 86,
+    "city" : "San Francisco",
+    "team" : "Giants",
+    "team_id" : "san-francisco-giants",
+    "win_percentage" : ".469"
+  },
+  {
+    "rank" : 3,
+    "won" : 76,
+    "lost" : 86,
+    "city" : "San Diego",
+    "team" : "Padres",
+    "team_id" : "san-diego-padres",
+    "win_percentage" : ".469"
+  },
+  {
+    "rank" : 5,
+    "won" : 74,
+    "lost" : 88,
+    "city" : "Colorado",
+    "team" : "Rockies",
+    "team_id" : "colorado-rockies",
+    "win_percentage" : ".457"
+  }
+]

@@ -1,0 +1,9 @@
+<div>
+  <ul ng-if="movies">
+    <li ng-repeat="movie in movies">{{ movie.title }} <br>
+      <ul>
+        <li ng-repeat="(key, val) in movie">{{ key }} : {{ val }}</li>
+      </ul>
+    </li>
+  </ul>
+</div>

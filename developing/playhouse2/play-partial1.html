@@ -1,0 +1,99 @@
+<div ng-app="Step1">
+
+    <div class="col-sm-12">
+        <h3 class="alert-info col-sm-10">This part is for Step 1</h3>
+    </div>
+
+    <form novalidate ng-controller="Step1Ctrl" name="formStep3">
+
+        <div class="form-horizontal" style="margin-top:5px">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="bkNum">Bank Number: </label>
+
+                <div class="col-sm-5">
+                    <select ng-model="bkacct.bankID" id="bkNum" type="number" class="form-control" required
+                            ng-options ="record.bankID as record.bankID for record in dinfo | unique:'bankID' ">
+                        <option value="">Select Bank Number</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="compNum">Composite Number: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="bkacct.compNum" id="compNum" type="text" class="form-control" jqautocomp />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="cpSeg">Composite Region/Segment: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="bkacct.cpSeg" id="cpSeg" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="cpName">Composite Name: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="bkacct.cpName" id="cpName" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="cpOfc">Treasury Management Sales Officer: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="bkacct.cpOfc" id="cpOfc" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="resNum">Results Charge Account: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="bkacct.resAcct" id="resNum" type="number" class="form-control" required/>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <br>
+
+            <div class="form-group">
+
+                <div class="col-sm-4">
+                    <button ng-click="GoStep2()" class="col-sm-4 btn-warning" name="GoStep2" id="submit1">
+                        Step 2
+                    </button>
+                </div>
+
+
+                <label class="col-sm-2 control-label"></label>
+
+                <div class="col-sm-4">
+                    <button ng-click="GoStep4()" class="col-sm-4 btn-success" name="GoStep4" id="submit2">
+                        Step 4
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div>
+            <p>Here are the binded info:</p>
+            <p>{{bkacct}}</p>
+            <p>{{selList}}</p>
+        </div>
+    </form>
+
+
+</div>

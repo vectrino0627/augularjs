@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="Test">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.js"></script>
+    <script src="appComplete.js"></script>
+    <script src="ngautocomplete.js"></script>
+
+
+</head>
+
+<body>
+
+<div ng-controller="TestCtrl">
+
+    <form id="form" role="form">
+
+        <div class="form-group move-down">
+            <label for="Autocomplete">Generic Autocomplete</label>
+            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete="result1" details="details1" />
+        </div>
+        <div>result: {{result}}</div>
+
+        <div class="form-group move-down">
+            <label for="Autocomplete">Autocomplete - Cities in Canada</label>
+            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete="result2" details="details2" />
+        </div>
+        <div>result: {{result}}</div>
+
+        <div class="form-group move-down">
+            <label for="Autocomplete">Autocomplete - Establishments in the UK</label>
+            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete="result3" details="details3" />
+        </div>
+        <div>result: {{result}}</div>
+    </form>
+</div>
+
+
+</body>
+</html>

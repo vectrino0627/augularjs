@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="citiesApp">
+<head>
+  <title>Preventing FOUC</title>
+  <style>
+    #list-container > div {
+      display: inline-block;
+      width: 170px
+    }
+
+    /*
+    By default, ng-hide uses display:none. This overrides that behavior
+    but then AngularJS overrides it back. Nonetheless, useful for
+    keep-space, below
+    */
+    [ng-cloak] {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+<div ng-controller="CityListCtrl">
+
+  <label for="filter-city">City Filter:</label>
+  <input type="text" id="filter-city" ng-model="filterCity" autofocus="true"/>
+
+  <div id="list-container">
+    <div id="original-list">
+      <h2>Original</h2>
+      <ul>
+        <li ng-repeat="city in cities | filter: filterCity | orderBy: 'name'">
+          {{ city.name }}
+        </li>
+      </ul>
+    </div>
+    <div id="bind-list">
+      <h2>ng-bind</h2>
+      <ul>
+        <li ng-repeat="city in cities | filter: filterCity | orderBy: 'name'"
+            ng-bind="city.name"></li>
+      </ul>
+
+    </div>
+    <div id="cloak-list">
+      <h2>ng-cloak</h2>
+      <ul>
+        <li ng-cloak
+            ng-repeat="city in cities | filter: filterCity | orderBy: 'name'">
+          {{ city.name }}
+        </li>
+      </ul>
+    </div>
+    <div id="keep-space">
+      <h2>Keep space</h2>
+      <ul>
+        <!-- The display type has to be the same as an unmodified <li> element -->
+        <li ng-cloak style="display:list-item !important;"
+            ng-repeat="city in cities | filter: filterCity | orderBy: 'name'">
+          {{ city.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- The easier solution is to move these files into the <head> section -->
+<script src="/common/js/angular/angular.js"></script>
+<script src="lifecycle-cloak.js"></script>
+</body>
+</html>

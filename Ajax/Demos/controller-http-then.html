@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="citiesApp">
+<head>
+  <title>$http Example</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="controller-http-then.js"></script>
+</head>
+<body>
+<div ng-controller="CityListCtrl">
+
+  <label for="filter-city">City Filter (using then()): </label>
+  <input type="text" id="filter-city" ng-model="filterCity" autofocus="true"/>
+
+  <ul>
+    <li ng-repeat="city in cities | filter: filterCity | orderBy: 'name'">{{ city.name }}</li>
+  </ul>
+
+</div>
+</body>
+</html>

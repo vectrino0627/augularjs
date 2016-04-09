@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our First Angular File</title>
+
+    <script src="/common/js/angular/angular.js"></script>
+    <script src="first-angular.js"></script>
+</head>
+<body ng-app = 'firstApp'>
+<div ng-controller="MainCtrl">
+    <label for="person-name">Please enter your name:</label>
+    <input type="text" id="person-name" ng-model="yourName">
+
+    <p ng-if="yourName.length > 1">{{ greeting }}, {{ yourName }}</p>
+
+    <p>
+        <label for="pick-team" >Filter Teams: </label>
+        <input type="text" id="pick-team" ng-model="filterTeams.city">
+    </p>
+<p>
+    <label for="pick-aletter" >Filter Teams or city: </label>
+    <input type="text" id="pick-aletter" ng-model="cityOrTeam">
+    </p>
+    <ul>
+        <li ng-repeat='team in teams| cityTeamFilter:cityOrTeam | orderBy:["city", "team"] '>
+            {{team.city | uppercase}} {{ team.team}}
+        </li>
+
+    </ul>
+
+
+</div>
+</body>
+</html>

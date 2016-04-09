@@ -1,0 +1,59 @@
+<div id="search-view" ng-controller="ProductSearchCtrl" class="col-sm-3 col-right-border full-height">
+  <div style="margin-top: 5px" class="form-horizontal">
+    <div class="form-group"><label class="col-sm-4 control-label" for="productName">Product Name: </label>
+
+      <div class="col-sm-8"><input class="form-control" ng-model="productName" type="text" name="productName"
+                                   id="productName"/></div>
+    </div>
+
+    <div class="form-group"><label class="col-sm-4 control-label" for="category">Category: </label>
+
+      <div class="col-sm-8"><select class="form-control" ng-model="category" name="category" id="category"
+                                    ng-options="category.categoryName for category in categories track by category.categoryID"
+                                    ng-change="changeSearch()">
+        <option value="">None</option>
+      </select></div>
+    </div>
+
+    <div class="form-group"><label class="col-sm-4 control-label" for="supplier">Supplier:</label>
+
+      <div class="col-sm-8"><select class="form-control" ng-model="supplier" name="supplier" id="supplier"
+                                    ng-options="supplier.companyName for supplier in suppliers track by supplier.supplierID"
+                                    ng-change="changeSearch()">
+        <option value="">None</option>
+      </select></div>
+    </div>
+
+    <div class="col-sm-1 col-sm-offset-4">
+      <button ng-click="changeSearch()" class="btn btn-default btn-sm">Search!</button>
+    </div>
+  </div>
+</div>
+
+<div id="list-view" ng-controller="ProductListCtrl" class="col-sm-3 col-right-border y-scroller full-height">
+  <p ng-hide="products">No products matched your search</p>
+  <ul style="margin-top: 10px">
+    <li class="blank" ng-click="clickProduct(product)"
+        ng-repeat="product in products">{{product.productName}}
+    </li>
+  </ul>
+
+</div>
+
+<div id="detail-view" ng-controller="ProductDetailCtrl" class="col-sm-6">
+  <p ng-hide="product">Product details will appear here</p>
+
+  <div ng-show="product" class="col-sm-8 col-sm-offset-1">
+    <h3>{{ product.productName }}</h3>
+    <ul>
+      <li>Price per unit: {{product.unitPrice}}</li>
+      <li>Stock: {{product.unitsInStock}}</li>
+      <li>Inventory value: {{product.unitPrice * product.unitsInStock | currency}}</li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 col-sm-offset-2">
+      <nav-buttons current-product="product"></nav-buttons>
+    </div>
+  </div>
+</div>

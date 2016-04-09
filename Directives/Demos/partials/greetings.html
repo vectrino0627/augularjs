@@ -1,0 +1,4 @@
+<!--<p>Hello, {{firstName}} {{ lastName }} (via personName)</p>-->
+<p ng-hide="localName">Hello, {{personObj.firstName}} {{ personObj.lastName }}</p>
+<p ng-hide="personObj.firstName && personObj.lastName">Hello, {{ localName }}</p>
+

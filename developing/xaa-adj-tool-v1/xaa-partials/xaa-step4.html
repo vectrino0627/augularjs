@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--
+<link rel="stylesheet" href="/common/css/bootstrap/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" type="text/css">
+<link rel="stylesheet" href="ng-class-related.css" type="text/css">
+
+<script src="/common/js/jquery/jquery.min.js"></script>
+<script src="/common/js/angular/angular.js"></script>
+
+<script src="/common/js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+
+<script src="../xaa-adj-js/xaa-step4.js"></script>
+-->
+
+
+<div ng-app="XaaStep4">
+
+    <div class="col-sm-12">
+        <h3 class="alert-info col-sm-10">This part is for XAA Adjust Tool Step 4</h3>
+    </div>
+
+    <form novalidate ng-controller="Step4Ctrl" name="formStep4">
+
+        <div class="form-horizontal" style="margin-top:5px" id="step4Input">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="acctNum">Account Number: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="cnt.acctNum" id="acctNum" type="number" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="adjMon">Month to Adjust: </label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="cnt.adjMon" id="adjMon"  jqdatepicker2
+                               placeholder="Month YYYY" type="text" class="form-control adjMon" required/>
+                    </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="actn">Action Options: </label>
+
+                <div class="col-sm-5">
+                    <select  ng-model="cnt.actn" id="actn" type="text" class="form-control"
+                             ng-options="action for action in actnOps"
+                             required>
+
+                    </select>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="miscInfo">
+                    Is this a “Misc $” adjustment? </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="cnt.miscInfo" id="miscInfo" type="checkbox" class="form-control" required/>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="svcID">Service ID: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="cnt.svcID" id="svcID" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="svcVol">Volume: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="cnt.svcVol" id="svcVol" type="number" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="svcPrc">Price Per Unit: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="cnt.svcPrc" id="svcPrc" type="number" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="ttAdj">Total Adjust Amount: </label>
+
+                <div class="col-sm-5">
+                    <input ng-model="cnt.ttAdj" id="ttAdj" type="number" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group" id="addRecords">
+                <label class="col-sm-2 control-label" for="adjRes">Reason for Adjustment: </label>
+
+                <div class="col-sm-5">
+                    <textarea ng-model="cnt.adjRes" id="adjRes"  class="form-control"  rows="3" required>
+                        </textarea>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label class="col-sm-4"></label>
+
+                <div class="col-sm-4">
+                    <button ng-click="AddRecord()" class="col-sm-4 btn-primary" >
+                        Add Record
+                    </button>
+                </div>
+            </div>
+
+
+            <br>
+
+
+
+
+
+
+            <hr>
+
+            <div class="form-group">
+
+                <div class="col-sm-4">
+                    <button ng-click="GoStep3()" class="col-sm-4 btn-warning" name="GoStep3" id="submit1">
+                        Step 3
+                    </button>
+                </div>
+
+
+                <label class="col-sm-2 control-label"></label>
+
+                <div class="col-sm-4">
+                    <button ng-click="GoReview()" class="col-sm-4 btn-success" name="GoStep1" id="submit2">
+                        Submit
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div>
+            <p>Here are the binded info:</p>
+            <p>{{cnt}}</p>
+            <p>{{compAdj}}</p>
+        </div>
+    </form>
+
+
+</div>

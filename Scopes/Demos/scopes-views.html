@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="scopeViews">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Scopes and views</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="scopes-views.js"></script>
+  <style>
+    div {
+      border: solid 5px red;
+    }
+
+    div > div {
+      border: solid 5px green;
+      margin: 8px;
+    }
+
+    div > div > div {
+      border: solid 5px yellow;
+      margin: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div ng-controller="ParentCtrl">
+  <h2>Parent Controller</h2>
+
+  <p>$scope.scopeName: {{ scopeName }}</p>
+
+  <p>Value of $scope.foo: {{ foo }}</p>
+
+  <div ng-controller="Child1Ctrl">
+    <h2>Child 1</h2>
+
+    <p>$scope.scopeName: {{ scopeName }}</p>
+
+    <p>Value of $scope.foo: {{ foo }}</p>
+
+    <p>Parent access ($parent.scopeName): {{ $parent.scopeName }} </p>
+  </div>
+  <div ng-controller="Child2Ctrl">
+    <h2>Child 2</h2>
+
+    <p>$scope.scopeName: {{ scopeName }}</p>
+
+    <p>Value of $scope.foo: {{ foo }}</p>
+
+    <p>Parent access ($parent.scopeName): {{ $parent.scopeName }} </p>
+
+    <div ng-controller="GrandchildCtrl">
+      <h3>Grandchild</h3>
+
+      <p>$scope.scopeName: {{ scopeName }}</p>
+
+      <p>Value of $scope.foo: {{ foo }}</p>
+      <p>Value of $scope.$parent.foo: {{ $parent.foo }}</p>
+
+      <p>Parent access ($parent.scopeName): {{ $parent.scopeName }} </p>
+
+      <p>Grandparent access ($parent.$parent.scopeName): {{ $parent.$parent.scopeName }} </p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+.highlight {
+    background-color: yellow;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.ac-navbar {
+    background-color: lightgrey;
+    padding: 10px 0px 1px 0px;
+}
+
+.ac-navbar > ul {
+    list-style: none;
+    padding: 0
+}
+
+.ac-navbar > ul > li {
+    display: inline-block;
+    margin-left: 10px
+}
+
+.sublist > li:hover {
+    background-color: lightblue
+}
+
+.sublist {
+    background-color: white;
+    position: absolute;
+    float: left;
+    z-index: 1000;
+    min-width: 160px;
+    padding: 5px 3px;
+    margin: 2px 0 0;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+}
+
+.glyphicon-big {
+    font-size: 125%;
+}
+
+.glyphicon-small {
+    font-size: 75%;
+}
+
+.y-scroller {
+    overflow-y: scroll;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.banner {
+    border-bottom: 2px black groove;
+}
+
+.main-scroller {
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.col-align-left {
+    padding-left: 2px;
+}
+
+.col-align-right {
+    padding-right: 2px;
+}
+
+.item-top-margin {
+    margin-top: 15px;
+}
+
+li.blank {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.col-right-border {
+    border-right: 2px black groove;
+}
+
+.col-left-border {
+    border-left: 2px black groove;
+}
+
+/* UI Bootstrap requirement */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+

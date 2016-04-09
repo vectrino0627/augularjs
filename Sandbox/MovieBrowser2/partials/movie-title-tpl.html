@@ -1,0 +1,8 @@
+<div>
+  <label for="movie-title">Enter the name of a movie: </label>
+  <input ng-model="movieTitle" type="text" name="movie-title" id="movie-title">
+  <br>
+  <button ng-click="findMovie(movieTitle)">Search!</button>
+
+  <div ui-view></div>
+</div>

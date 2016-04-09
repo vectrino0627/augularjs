@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!-- Put this in a template to make life easier. Otherwise, you'll forget half the time!
+     ng-app tells Angular that this page should be parsed as an application -->
+<html ng-app>
+<head>
+  <title>Angular's Hello World</title>
+  <script src="/common/js/angular/angular.js"></script>
+</head>
+<body>
+<form>
+  <!-- ng-model creates a data model on-the-fly. This is very useful -->
+  <label for="name">Name:</label>
+  <input id="name" type="text" ng-model="name" autofocus="1"/>
+</form>
+<!-- Automatic data binding. Whatever you type in the text field shows up here. -->
+<!-- ngIf is a conditional, here checking to see if name is defined. -->
+<p ng-if="foo">Hello, {{ name }}</p>
+</body>
+</html>

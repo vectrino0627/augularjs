@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML JS code testing</title>
+
+    <script src="/common/js/jquery/jquery.min.js"></script>
+    <script src="/common/js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <script src="/common/js/angular/angular.js"></script>
+    <script src="/common/js/angular-ui-router/angular-ui-router.js"></script>
+
+
+    <script src="play-house-main.js"></script>
+
+    <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="play-house.css" type="text/css">
+    <link rel="stylesheet" href="/common/css/jqueryui/jquery-ui.css" type="text/css">
+
+
+
+
+</head>
+
+
+<body ng-app="playHouse">
+
+    <div>
+        <div class="col-sm-12">
+            <div class="modal-header col-sm-10">
+                <div class="col-sm-4">
+                    <img src="https://media.cofstatic.com/assets/rwd/img/logo/option-2-btn.png"
+                         alt="Capital One" class="default-logo" href="http://www.capitalone.com" class="col-sm-3"/>
+                </div>
+                <div class = "col-sm-6">
+                    <h3 class="active" >Capital One XAA Adjust Tool for Commercial Bank</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-controller="autoCtrl" >
+        <div class="col-sm-12">
+            <p>For auto complete testing purpose.</p>
+            <P>jQuery UI required.</P>
+
+            <div class="form-group">
+
+                <label for="stName" class="col-sm-2 control-label">State Name: </label>
+                <div class="col-sm-4">
+                    <input ng-model="abc" id="stName" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <p>{{usStates}}</p>
+            <p>{{abc}}</p>
+        </div>
+    </div>
+
+</body>
+
+
+</html>

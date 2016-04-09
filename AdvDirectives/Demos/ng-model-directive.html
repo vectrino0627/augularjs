@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ng Model Directive</title>
+  <script src="/New/commonar/angular.js"></script>
+  <script>
+    (function(angular) {
+      var mod = angular.module( 'modelApp', [] );
+      mod.directive('modelTest', function($log) {
+        var obj = {
+          template : '<p>Just a test</p>',
+          require  : 'ngModel',
+          controller : function($log) {
+            $log.log('A test from inside model-test\'s controller');
+
+            this.name='model-test';
+          },
+          link     : function ( scope, element, attrs, modelCtrl ) {
+            $log.log( modelCtrl );
+            $log.log( 'this.name: ', obj.controller );
+          }
+        };
+
+        return obj;
+      });
+    })(angular);
+  </script>
+</head>
+<body ng-app="modelApp">
+<p>Model test: </p>
+<model-test ng-model="foo"></model-test>
+</body>
+</html>

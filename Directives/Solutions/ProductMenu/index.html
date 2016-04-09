@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="menuApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu Directive</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+
+  <!-- Note that we've included jQuery, which will make a few things easier. -->
+  <script src="/common/js/jquery/jquery.js"></script>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="directives.js"></script>
+</head>
+<body>
+<h2>Menu Bar Directive</h2>
+
+<div>
+  <h2>Original</h2>
+  <nav class="ac-navbar">
+    <ul>
+      <li>Find
+        <ul>
+          <li>by name</li>
+          <li>by city</li>
+          <li>by country</li>
+        </ul>
+      </li>
+      <li>Edit
+        <ul>
+          <li>Product</li>
+          <li>Customer</li>
+          <li>Employee</li>
+        </ul>
+      </li>
+      <li>View</li>
+    </ul>
+  </nav>
+</div>
+
+<div>
+  <h2>Menu-ified</h2>
+  <nav class="ac-navbar">
+    <!-- Add the directive 'ac-menu' to this unordered list -->
+    <ul ac-menu>
+      <li>Find
+        <ul>
+          <li>by name</li>
+          <li>by city</li>
+          <li>by country</li>
+        </ul>
+      </li>
+      <li>Edit
+        <ul>
+          <li>Product</li>
+          <li>Customer</li>
+          <li>Employee</li>
+        </ul>
+      </li>
+      <li>View</li>
+    </ul>
+  </nav>
+</div>
+
+</body>
+</html>

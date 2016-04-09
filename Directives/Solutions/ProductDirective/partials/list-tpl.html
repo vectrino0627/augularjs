@@ -1,0 +1,9 @@
+<div id="list-view" class="col-sm-3 col-right-border y-scroller full-height">
+  <p ng-hide="products">No products matched your search</p>
+  <ul style="margin-top: 10px">
+    <li class="blank" ng-click="clickProduct(product)"
+        ng-repeat="product in products">{{product.productName}}
+    </li>
+  </ul>
+
+</div>

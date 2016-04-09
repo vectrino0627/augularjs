@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <title>Directives</title>
+</head>
+<body>
+<div ng-controller="MainCtrl">
+  <h2>Hello, {{name}}</h2>
+
+  <greeter greeted-person="person">Hola Ritu!</greeter>
+</div>
+
+<div ng-controller="OtherCtrl">
+  <h2>Other controller....</h2>
+  <greeter greeted-person="person"></greeter>
+  <tgreet>Hello, {{name}}</tgreet>
+</div>
+
+<script src="/common/js/angular/angular.js"></script>
+<script>
+  var myApp = angular.module( 'myApp', [] );
+  myApp.controller( 'MainCtrl', function ( $scope ) {
+    $scope.name = 'John';
+    $scope.person = {
+      firstName : 'John',
+      lastName : 'Paxton',
+      age : 40
+    };
+
+  } );
+
+  myApp.controller( 'OtherCtrl', function ( $scope ) {
+    $scope.name = 'Fred';
+    $scope.person = {
+      firstName : 'Thomas',
+      lastName : 'Pynchon',
+      age : 70
+    };
+  } );
+
+  myApp.directive( 'greeter', function () {
+    return {
+      templateUrl : 'partials/greeter.html',
+      restrict: 'E',
+      scope : {
+        foo : '=greetedPerson'
+      }
+    };
+  } );
+
+  myApp.directive('tgreet', function() {
+    console.log( arguments );
+
+    return {
+      restrict: 'E',
+      templateUrl: 'partials/transclude-greeter.html',
+      transclude: true
+
+
+    }
+  })
+</script>
+</body>
+</html>

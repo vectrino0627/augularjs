@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- Change ng-app so that it takes an argument of "firstApp" -->
+<html ng-app>
+<head>
+  <title>Our first AngularJS page</title>
+  <script src="/common/js/angular/angular.js"></script>
+
+  <!--
+  Add a script tag pointing to first-angular-better.js
+  -->
+
+</head>
+<body>
+<!-- Add an ng-controller attribute which loads MainCtrl -->
+<div>
+  <p>
+    <label for="team">Please name your favorite sports team: </label>
+    <input ng-model="team" type="text" name="team" id="team" autofocus/>
+  </p>
+
+  <p ng-if="team">
+    Your favorite team is the {{ team }}.
+  </p>
+
+  <p>Here are some other sports teams: </p>
+
+  <!--
+  Add an unordered list which lists out the teams in $scope.teams
+  -->
+
+</div>
+
+</body>
+</html>

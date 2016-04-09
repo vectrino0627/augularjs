@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app="dirApp">
+<head>
+  <title>Directives</title>
+</head>
+<body>
+<div ng-controller="DirCtrl">
+  <p>Transclusion directives</p>
+  [<trans-tag person-name="Belinda"><b>A transcluded tag for {{otherPerson}}</b></trans-tag>]
+</div>
+<script src="/common/js/angular/angular.js"></script>
+<script src="transclude.js"></script>
+</body>
+</html>

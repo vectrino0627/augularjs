@@ -1,0 +1,12 @@
+<div class="col-sm-3 col-right-border full-height y-scroller">
+  <ul style="margin-top:10px">
+    <li class="blank" ng-repeat="product in products">
+      <a ui-sref="products.detail({productID: product.productID})">
+        {{ product.productName }}
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="col-sm-6">
+  <div ui-view class="item-top-margin"></div>
+</div>

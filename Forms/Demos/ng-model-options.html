@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html ng-app="employeeApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>An Angular Application</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="/common/js/angular-ui-router/angular-ui-router.js"></script>
+  <script src="../lib/js/employee-services.js"></script>
+  <script src="ng-model-options.js"></script>
+  <style>
+    .on-blur-control {
+      border-color: red
+    }
+
+    .debounce-control {
+      border-color: blue
+    }
+  </style>
+
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row text-center" style="margin-bottom: 15px">
+    <h2>The Northwind Trading Company</h2>
+  </div>
+</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Employees</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Search</a></li>
+        <li><a href="#">Edit</a></li>
+        <li><a href="#">Add</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div ng-controller="EmployeeMainCtrl" class="container-fluid">
+  <div class="row"> <!-- The entire row for the form and the display -->
+    <form class="form-horizontal" name="employeeForm" novalidate="novalidate">
+      <div id="form-rows" class="col-sm-4 col-right-border">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="firstName">
+            First Name:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.firstName"
+                   ng-model-options="{updateOn: 'blur'}"
+                   class="form-control on-blur-control"
+                   id="firstName" name="firstName" type="text"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="lastName">
+            Last Name:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.lastName"
+                   ng-model-options="{updateOn: 'blur'}"
+                   class="form-control on-blur-control"
+                   id="lastName" name="lastName" type="text"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"
+                 for="address">Address:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.address" class="form-control" id="address"
+                   name="address" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="city">City:</label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.city" class="form-control debounce-control"
+                   ng-model-options="{debounce: 1500}"
+                   id="city" name="city" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"
+                 for="region">State/Region:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.region" class="form-control debounce-control"
+                   ng-model-options="{debounce: 1500}"
+                   id="region" name="region" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"
+                 for="country">Country:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.country" class="form-control debounce-control"
+                   ng-model-options="{debounce: 1500}"
+                   id="country" name="country" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="postalCode">Postal
+            Code:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.postalCode" class="form-control"
+                   id="postalCode" name="postalCode" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="title">Job
+            Title:
+          </label>
+
+          <div class="col-sm-9">
+            <input ng-model="emp.title" class="form-control" id="title"
+                   name="title" type="text"/>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Display other information next to the form -->
+    <div id="display-rows" class="col-sm-4">
+      <ul class="list-unstyled">
+        <li>{{ emp.firstName }} {{ emp.lastName }}</li>
+        <li>{{ emp.title }}</li>
+        <li>{{ emp.city }}, {{ emp.region }} {{ emp.postalCode }}</li>
+        <li>{{ emp.country }}</li>
+      </ul>
+
+      <h3>Form state: </h3>
+      <ul class="list-unstyled">
+        <li>
+          <input type="checkbox" name="isPristine" id="isPristine"
+                 ng-model="employeeForm.$pristine"/>
+          <label for="isPristine">Pristine?</label>
+        </li>
+        <li>
+          <input type="checkbox" name="isDirty" id="isDirty"
+                 ng-model="employeeForm.$dirty"/>
+          <label for="isDirty">Dirty?</label>
+        </li>
+        <li>
+          <input type="checkbox" name="isValid" id="isValid"
+                 ng-model="employeeForm.$valid"/>
+          <label for="isValid">Valid?</label>
+        </li>
+        <li>
+          <input type="checkbox" name="isInvalid" id="isInvalid"
+                 ng-model="employeeForm.$invalid"/>
+          <label for="isInvalid">Invalid?</label>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>

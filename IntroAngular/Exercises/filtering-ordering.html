@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html ng-app="teamApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Filtering and Sorting</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="/AngularClass/localarClass/local/baseball-access.js"></script>
+  <script src="filtering-ordering.js"></script>
+
+  <style>
+    #ordering-form label.control-label {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+<div ng-controller="TeamCtrl" class="container-fluid">
+
+  <!-- Add ng-models to each of the input fields below. All the ng-models should
+  belong to the same object. -->
+  <div class="row" id="filters">
+
+    <div class="col-sm-5">
+      <h2>Filtering: </h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="city">City:</label>
+          <div class="col-sm-7">
+            <input id="city" name="city"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="team">Team: </label>
+          <div class="col-sm-7">
+            <input id="team" name="team"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="rank">Rank: </label>
+          <div class="col-sm-7">
+            <input id="rank" name="rank"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="won">Won: </label>
+          <div class="col-sm-7">
+            <input id="won" name="won"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="lost">Lost: </label>
+          <div class="col-sm-7">
+            <input id="lost" name="lost"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="win_percentage">Win Pct: </label>
+          <div class="col-sm-7">
+            <input id="win_percentage" name="win_percentage"
+                   class="form-control" type="text"/>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Add ng-models and values to each of the radio buttons below.
+         Each button should have the same ng-model, but a different value.
+         Hint: The value should be the name of the field to sort on. -->
+    <div id="order-by" class="col-sm-7">
+      <h2>Ordering: </h2>
+
+      <div class="radio">
+        <label>
+          <input type="radio" name="orderOpt" id="orderOpt-city" />
+          City
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="orderOpt" id="orderOpt-team" />
+          Team
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="orderOpt" id="orderOpt-rank" />
+          Rank
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="orderOpt" id="orderOpt-won" />
+          Won
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="orderOpt" id="orderOpt-lost" />
+          Lost
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="orderOpt" id="orderOpt-win_percentage" />
+          Win Pct
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+
+    <tr>
+      <th>City</th>
+      <th>Team</th>
+      <th>Rank</th>
+      <th>Won</th>
+      <th>Lost</th>
+      <th>Win Pct</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <!-- Add a filter Filter and an orderBy Filter, using the ng-models above -->
+    <tr ng-repeat="team in teams">
+      <td>{{ team.city }}</td>
+      <td>{{ team.team }}</td>
+      <td>{{ team.rank }}</td>
+      <td>{{ team.won }}</td>
+      <td>{{ team.lost }}</td>
+      <td>{{ team.win_percentage }}</td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

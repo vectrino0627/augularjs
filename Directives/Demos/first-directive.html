@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="dirApp">
+<head>
+  <title>Directives</title>
+</head>
+<body>
+<div ng-controller="DirCtrl">
+  <p>Working with our first directive</p>
+  <ul>
+    <li>Attribute directive:</li>
+    <li basic-attr></li>
+    <li>Tag directive: <basic-tag></basic-tag></li>
+    <li>Template-based tag directive: <template-tag></template-tag></li>
+  </ul>
+</div>
+
+<script src="/common/js/angular/angular.js"></script>
+<script src="first-directive.js"></script>
+</body>
+</html>

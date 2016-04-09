@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="transcludeDemo">
+<head>
+  <meta charset="UTF-8">
+  <title>A simple Transclusion demo</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="simple-transclude.js"></script>
+</head>
+<body>
+<div ng-controller="MainCtrl">
+  <ul>
+    <li>A plain list item</li>
+    <li tc-example>A transcluded list item</li>
+  </ul>
+</div>
+
+</body>
+</html>

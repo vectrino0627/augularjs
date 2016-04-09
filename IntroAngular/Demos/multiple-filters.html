@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="multiApp">
+<head>
+  <title>Filtering on multiple criteria</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="multiple-filters.js"></script>
+</head>
+<body ng-controller="MultiCtrl">
+<p>Here are some names:</p>
+<ul>
+  <!-- Note the use of filterPerson here -->
+  <li ng-repeat="person in people | filter:filterPerson">{{person.name}} is a {{person.age}}-year-old {{person.gender}}</li>
+</ul>
+<form>
+  <!-- Each element in the form has a corresponding property in the ng-model.
+       We can then pass 'filterPerson' to the filter to use the values in combination. -->
+  <label for="fName">Filter names: </label>
+  <input id="fName" type="text" ng-model="filterPerson.name"/><br/>
+  <label for="fAge">Filter age: </label>
+  <input id="fAge" type="text" ng-model="filterPerson.age"/><br/>
+  <label for="fGender">Filter gender: </label>
+  <input id="fGender" type="text" ng-model="filterPerson.gender"/><br/>
+</form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="highlightApp">
+<head>
+  <title>Highlighting matches</title>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="highlight-match.js"></script>
+
+  <style>
+    .highlight {
+      background-color: #ffff00;
+    }
+
+    .line {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body ng-controller="HighlightCtrl">
+<p>Here are some names:</p>
+<ul>
+  <li ng-repeat="personName in names">
+    <span ng-class="{'highlight' : nameFound(fName, personName)}">
+      {{ personName }}
+    </span>
+  </li>
+</ul>
+<form>
+  <label for="fName">Highlight matching names: </label><input id="fName" type="text" ng-model="fName"/><br/>
+  <label for="newName">Add a name: </label><input id="newName" type="text" ng-model="newName"/>
+  <button ng-click="addName(newName)">Add name!</button>
+</form>
+</body>
+</html>

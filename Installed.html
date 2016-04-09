@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="installCheck">
+<head>
+  <title>Angular JS install check</title>
+  <style>
+    #angular-installed {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body ng-controller="VersionCheckCtrl">
+<h2>A check to see whether Angular JS is installed correctly....</h2>
+
+<div id="angular-status">
+  <p>Angular is <span id="angular-installed">NOT</span> installed correctly.</p>
+
+  <p>Angular version: <span id="angular-version">{{angularVersion}}</span></p>
+</div>
+<script src="/common/js/angular/angular.js"></script>
+
+<script>
+  var installCheck = angular.module('installCheck', []);
+  installCheck.controller('VersionCheckCtrl', function($scope) {
+    console.log( 'Angular version: %s', angular.version.full );
+    $scope.angularVersion = angular.version.full;
+    angular.element(document.getElementById('angular-installed') ).empty();
+  })
+</script>
+</body>
+</html>

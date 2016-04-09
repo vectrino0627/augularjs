@@ -1,0 +1,366 @@
+[
+  {
+    "companyName" : "Alfreds Futterkiste",
+    "customerID" : "ALFKI"
+  },
+  {
+    "companyName" : "Ana Trujillo Emparedados y helados",
+    "customerID" : "ANATR"
+  },
+  {
+    "companyName" : "Antonio Moreno TaquerÃ­a",
+    "customerID" : "ANTON"
+  },
+  {
+    "companyName" : "Around the Horn",
+    "customerID" : "AROUT"
+  },
+  {
+    "companyName" : "Berglunds snabbkÃ¶p",
+    "customerID" : "BERGS"
+  },
+  {
+    "companyName" : "Blauer See Delikatessen",
+    "customerID" : "BLAUS"
+  },
+  {
+    "companyName" : "Blondesddsl pÃ¨re et fils",
+    "customerID" : "BLONP"
+  },
+  {
+    "companyName" : "BÃ³lido Comidas preparadas",
+    "customerID" : "BOLID"
+  },
+  {
+    "companyName" : "Bon app'",
+    "customerID" : "BONAP"
+  },
+  {
+    "companyName" : "Bottom-Dollar Markets",
+    "customerID" : "BOTTM"
+  },
+  {
+    "companyName" : "B's Beverages",
+    "customerID" : "BSBEV"
+  },
+  {
+    "companyName" : "Cactus Comidas para llevar",
+    "customerID" : "CACTU"
+  },
+  {
+    "companyName" : "Centro comercial Moctezuma",
+    "customerID" : "CENTC"
+  },
+  {
+    "companyName" : "Chop-suey Chinese",
+    "customerID" : "CHOPS"
+  },
+  {
+    "companyName" : "ComÃ©rcio Mineiro",
+    "customerID" : "COMMI"
+  },
+  {
+    "companyName" : "Consolidated Holdings",
+    "customerID" : "CONSH"
+  },
+  {
+    "companyName" : "Drachenblut Delikatessen",
+    "customerID" : "DRACD"
+  },
+  {
+    "companyName" : "Du monde entier",
+    "customerID" : "DUMON"
+  },
+  {
+    "companyName" : "Eastern Connection",
+    "customerID" : "EASTC"
+  },
+  {
+    "companyName" : "Ernst Handel",
+    "customerID" : "ERNSH"
+  },
+  {
+    "companyName" : "Familia Arquibaldo",
+    "customerID" : "FAMIA"
+  },
+  {
+    "companyName" : "FISSA Fabrica Inter. Salchichas S.A.",
+    "customerID" : "FISSA"
+  },
+  {
+    "companyName" : "Folies gourmandes",
+    "customerID" : "FOLIG"
+  },
+  {
+    "companyName" : "Folk och fÃ¤ HB",
+    "customerID" : "FOLKO"
+  },
+  {
+    "companyName" : "Frankenversand",
+    "customerID" : "FRANK"
+  },
+  {
+    "companyName" : "France restauration",
+    "customerID" : "FRANR"
+  },
+  {
+    "companyName" : "Franchi S.p.A.",
+    "customerID" : "FRANS"
+  },
+  {
+    "companyName" : "Furia Bacalhau e Frutos do Mar",
+    "customerID" : "FURIB"
+  },
+  {
+    "companyName" : "GalerÃ­a del gastrÃ³nomo",
+    "customerID" : "GALED"
+  },
+  {
+    "companyName" : "Godos Cocina TÃ­pica",
+    "customerID" : "GODOS"
+  },
+  {
+    "companyName" : "Gourmet Lanchonetes",
+    "customerID" : "GOURL"
+  },
+  {
+    "companyName" : "Great Lakes Food Market",
+    "customerID" : "GREAL"
+  },
+  {
+    "companyName" : "GROSELLA-Restaurante",
+    "customerID" : "GROSR"
+  },
+  {
+    "companyName" : "Hanari Carnes",
+    "customerID" : "HANAR"
+  },
+  {
+    "companyName" : "HILARION-Abastos",
+    "customerID" : "HILAA"
+  },
+  {
+    "companyName" : "Hungry Coyote Import Store",
+    "customerID" : "HUNGC"
+  },
+  {
+    "companyName" : "Hungry Owl All-Night Grocers",
+    "customerID" : "HUNGO"
+  },
+  {
+    "companyName" : "Island Trading",
+    "customerID" : "ISLAT"
+  },
+  {
+    "companyName" : "KÃ¶niglich Essen",
+    "customerID" : "KOENE"
+  },
+  {
+    "companyName" : "La corne d'abondance",
+    "customerID" : "LACOR"
+  },
+  {
+    "companyName" : "La maison d'Asie",
+    "customerID" : "LAMAI"
+  },
+  {
+    "companyName" : "Laughing Bacchus Wine Cellars",
+    "customerID" : "LAUGB"
+  },
+  {
+    "companyName" : "Lazy K Kountry Store",
+    "customerID" : "LAZYK"
+  },
+  {
+    "companyName" : "Lehmanns Marktstand",
+    "customerID" : "LEHMS"
+  },
+  {
+    "companyName" : "Let's Stop N Shop",
+    "customerID" : "LETSS"
+  },
+  {
+    "companyName" : "LILA-Supermercado",
+    "customerID" : "LILAS"
+  },
+  {
+    "companyName" : "LINO-Delicateses",
+    "customerID" : "LINOD"
+  },
+  {
+    "companyName" : "Lonesome Pine Restaurant",
+    "customerID" : "LONEP"
+  },
+  {
+    "companyName" : "Magazzini Alimentari Riuniti",
+    "customerID" : "MAGAA"
+  },
+  {
+    "companyName" : "Maison Dewey",
+    "customerID" : "MAISD"
+  },
+  {
+    "companyName" : "MÃ¨re Paillarde",
+    "customerID" : "MEREP"
+  },
+  {
+    "companyName" : "Morgenstern Gesundkost",
+    "customerID" : "MORGK"
+  },
+  {
+    "companyName" : "North/South",
+    "customerID" : "NORTS"
+  },
+  {
+    "companyName" : "OcÃ©ano AtlÃ¡ntico Ltda.",
+    "customerID" : "OCEAN"
+  },
+  {
+    "companyName" : "Old World Delicatessen",
+    "customerID" : "OLDWO"
+  },
+  {
+    "companyName" : "Ottilies KÃ¤seladen",
+    "customerID" : "OTTIK"
+  },
+  {
+    "companyName" : "Paris spÃ©cialitÃ©s",
+    "customerID" : "PARIS"
+  },
+  {
+    "companyName" : "Pericles Comidas clÃ¡sicas",
+    "customerID" : "PERIC"
+  },
+  {
+    "companyName" : "Piccolo und mehr",
+    "customerID" : "PICCO"
+  },
+  {
+    "companyName" : "Princesa Isabel Vinhos",
+    "customerID" : "PRINI"
+  },
+  {
+    "companyName" : "Que DelÃ­cia",
+    "customerID" : "QUEDE"
+  },
+  {
+    "companyName" : "Queen Cozinha",
+    "customerID" : "QUEEN"
+  },
+  {
+    "companyName" : "QUICK-Stop",
+    "customerID" : "QUICK"
+  },
+  {
+    "companyName" : "Rancho grande",
+    "customerID" : "RANCH"
+  },
+  {
+    "companyName" : "Rattlesnake Canyon Grocery",
+    "customerID" : "RATTC"
+  },
+  {
+    "companyName" : "Reggiani Caseifici",
+    "customerID" : "REGGC"
+  },
+  {
+    "companyName" : "Ricardo Adocicados",
+    "customerID" : "RICAR"
+  },
+  {
+    "companyName" : "Richter Supermarkt",
+    "customerID" : "RICSU"
+  },
+  {
+    "companyName" : "Romero y tomillo",
+    "customerID" : "ROMEY"
+  },
+  {
+    "companyName" : "SantÃ© Gourmet",
+    "customerID" : "SANTG"
+  },
+  {
+    "companyName" : "Save-a-lot Markets",
+    "customerID" : "SAVEA"
+  },
+  {
+    "companyName" : "Seven Seas Imports",
+    "customerID" : "SEVES"
+  },
+  {
+    "companyName" : "Simons bistro",
+    "customerID" : "SIMOB"
+  },
+  {
+    "companyName" : "SpÃ©cialitÃ©s du monde",
+    "customerID" : "SPECD"
+  },
+  {
+    "companyName" : "Split Rail Beer & Ale",
+    "customerID" : "SPLIR"
+  },
+  {
+    "companyName" : "SuprÃªmes dÃ©lices",
+    "customerID" : "SUPRD"
+  },
+  {
+    "companyName" : "The Big Cheese",
+    "customerID" : "THEBI"
+  },
+  {
+    "companyName" : "The Cracker Box",
+    "customerID" : "THECR"
+  },
+  {
+    "companyName" : "Toms SpezialitÃ¤ten",
+    "customerID" : "TOMSP"
+  },
+  {
+    "companyName" : "Tortuga Restaurante",
+    "customerID" : "TORTU"
+  },
+  {
+    "companyName" : "TradiÃ§Ã£o Hipermercados",
+    "customerID" : "TRADH"
+  },
+  {
+    "companyName" : "Trail's Head Gourmet Provisioners",
+    "customerID" : "TRAIH"
+  },
+  {
+    "companyName" : "Vaffeljernet",
+    "customerID" : "VAFFE"
+  },
+  {
+    "companyName" : "Victuailles en stock",
+    "customerID" : "VICTE"
+  },
+  {
+    "companyName" : "Vins et alcools Chevalier",
+    "customerID" : "VINET"
+  },
+  {
+    "companyName" : "Die Wandernde Kuh",
+    "customerID" : "WANDK"
+  },
+  {
+    "companyName" : "Wartian Herkku",
+    "customerID" : "WARTH"
+  },
+  {
+    "companyName" : "Wellington Importadora",
+    "customerID" : "WELLI"
+  },
+  {
+    "companyName" : "White Clover Markets",
+    "customerID" : "WHITC"
+  },
+  {
+    "companyName" : "Wilman Kala",
+    "customerID" : "WILMK"
+  },
+  {
+    "companyName" : "Wolski  Zajazd",
+    "customerID" : "WOLZA"
+  }
+]

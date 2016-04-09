@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="addNameApp">
+<head>
+  <title>Adding names to the list</title>
+  <link rel="stylesheet" href="/common/css/bootstrap/bootstrap.css"/>
+  <link rel="stylesheet" href="/common/css/local/local.css"/>
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="add-name.js"></script>
+</head>
+<body ng-controller="AddNameCtrl">
+<div class="container">
+  <div class="row">
+    <h3>People:</h3>
+    <ul class="col-sm-offset-2 list-unstyled">
+      <li ng-repeat="person in people | filter:personFilter" style="margin-left: 15px">
+        {{ person.name }} ({{ person.age }}, {{ person.gender }})
+      </li>
+    </ul>
+  </div>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="fName" class="control-label col-sm-2">Filter names:</label>
+
+      <div class="col-sm-4">
+        <input ng-model="personFilter.name" class="form-control" id="fName" type="text"/>
+      </div>
+    </div>
+  </form>
+
+  <form class="form-horizontal">
+    <h3>Add a person: </h3>
+
+    <div class="form-group">
+      <label for="person-name" class="col-sm-2 control-label">Name:</label>
+
+      <div class="col-sm-3">
+        <input id="person-name" class="form-control" ng-model="person.name"
+               type="text"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="person-age" class="col-sm-2 control-label">Age:</label>
+
+      <div class="col-sm-3">
+        <input id="person-age" class="form-control" ng-model="person.age"
+               type="number"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="person-gender" class="col-sm-2 control-label">Gender:</label>
+
+      <div class="col-sm-3">
+        <select ng-model="person.gender" class="form-control"
+                name="person-gender" id="person-gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+    </div>
+    <div class="row col-sm-offset-2">
+      <button ng-click="addPerson(person)" class="btn btn-default" style="margin-left: 4px">
+        Add Person!
+      </button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

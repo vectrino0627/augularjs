@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="citiesApp">
+<head>
+  <title>Multiple controllers in a page</title>
+
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="double-controller.js"></script>
+
+</head>
+<body>
+<div ng-controller="ParentCtrl">
+  <div ng-controller="WestCoastCtrl">
+    <h2>West coast cities</h2>
+
+    <ul>
+      <li ng-repeat="city in cities">{{city.name}}</li>
+    </ul>
+
+  </div>
+
+  <div ng-controller="EastCoastCtrl">
+    <h2>East coast cities</h2>
+
+    City Filter: <input type="text" id="filter-city" ng-model="filterCity" autofocus="true"/>
+
+    <ul>
+      <li ng-repeat="city in cities | filter: filterCity | orderBy: 'name'">{{ city.name }}</li>
+    </ul>
+
+  </div>
+</div>
+
+</body>
+</html>

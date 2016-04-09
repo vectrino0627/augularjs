@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="teamApp">
+<head>
+  <title>Exercise: Accessing data over $http</title>
+</head>
+<body>
+<div ng-controller="TeamCtrl">
+  <form>
+    <label for="fTeam">Filter teams: </label>
+    <input id="fTeam" type="text" ng-model="fTeam"/><br/>
+    <br/>
+  </form>
+
+  <p>A list of teams: </p>
+  <ul>
+    <li ng-repeat="team in teams | filter: fTeam | orderBy: ['city','-won']  ">
+      {{team.city}} {{team.team}}
+      ({{team.won}} - {{team.lost}})
+    </li>
+  </ul>
+
+  <script src="/common/js/angular/angular.js"></script>
+  <script src="using-http.js"></script>
+</div>
+
+</body>
+</html>
